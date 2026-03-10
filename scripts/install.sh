@@ -17,9 +17,37 @@ fi
 # Initialize workspace
 openclaw setup
 
+# Config directory
+CFG_DIR="$HOME/.openclaw-evolution/config"
+mkdir -p "$CFG_DIR"
+
+# Unique seed
+SEED="$(date +%s)-$RANDOM"
+
+# Ask mode
+read -r -p "Choose evolution mode (conservative/fast) [conservative]: " MODE
+if [ "$MODE" != "fast" ]; then MODE="conservative"; fi
+
+# Ask tick
+read -r -p "Choose tick seconds (60/120/300) [60]: " TICK
+if [ "$TICK" != "120" ] && [ "$TICK" != "300" ]; then TICK="60"; fi
+
+cat > "$CFG_DIR/seed.json" <<EOF
+{ "seed": "$SEED", "note": "Each install gets a unique seed." }
+EOF
+
+cat > "$CFG_DIR/evolution_mode.json" <<EOF
+{ "mode": "$MODE", "allowed": ["conservative", "fast"] }
+EOF
+
+cat > "$CFG_DIR/tick.json" <<EOF
+{ "tick_seconds": $TICK, "allowed": [60, 120, 300] }
+EOF
+
 # Start gateway (best effort)
 openclaw gateway start || true
 
 echo "[OpenClaw Evolution] Done."
+echo "Note: This system can be token‑intensive during evolution loops."
 echo "Next: run the loop with:"
-echo "powershell -ExecutionPolicy Bypass -File .\brainflow\run_daemon.ps1 -IntervalSec 60 -PushMinIntervalSec 600 -Workflow auto"
+echo "powershell -ExecutionPolicy Bypass -File .\\brainflow\\run_daemon.ps1 -IntervalSec $TICK -PushMinIntervalSec 600 -Workflow auto"
