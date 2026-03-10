@@ -1,0 +1,5 @@
+{
+  "tick_seconds": 60,
+  "allowed": [60, 120, 300],
+  "note": "Changeable at any time; smaller = faster cycles, higher = lower cost."
+}
