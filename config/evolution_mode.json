@@ -1,0 +1,5 @@
+{
+  "mode": "conservative",
+  "allowed": ["conservative", "fast"],
+  "note": "conservative = stable/slow; fast = aggressive/rapid. Install script can change this any time."
+}
