@@ -1,0 +1,4 @@
+{
+  "mode": "front_drives_back",
+  "note": "After each front‑end turn, decide whether to spawn back‑end task(s). Back‑end must report completion/failure to front‑end before closing the loop."
+}
