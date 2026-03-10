@@ -2,6 +2,8 @@
 
 This project is an **advanced evolution of OpenClaw** (independent, not endorsed by OpenClaw). It is designed to be **human‑centered, verifiable, and easy to run**.
 
+> ⚠️ **Token usage note**: evolution loops can be **token‑intensive**.
+
 ---
 
 ## 0) Prerequisites
@@ -12,7 +14,10 @@ This project is an **advanced evolution of OpenClaw** (independent, not endorsed
 ---
 
 ## 1) One‑click install (recommended)
-> Choose the script for your OS.
+> The installer will ask you for:
+> - **Evolution mode**: conservative or fast
+> - **Tick**: 60/120/300 seconds
+> It will also generate a **unique seed** so each installation is slightly different (but compatible).
 
 ### Windows (PowerShell)
 ```powershell
@@ -60,6 +65,4 @@ powershell -ExecutionPolicy Bypass -File .\brainflow\run_daemon.ps1 -IntervalSec
 
 ## Notes
 - This repository contains **no personal data**.
-- All behavior is auditable via logs and scorecards.
-
-If you hit issues, open an Issue with your logs.
+- Each install gets a **unique seed** and can run in **conservative** or **fast** evolution mode.
