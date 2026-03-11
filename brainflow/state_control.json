@@ -1,0 +1,17 @@
+{
+  "topic": "user_centric_self_evolution",
+  "intent": {
+    "topic": "self_evolution_stability_capability"
+  },
+  "paused": false,
+  "proactive_enabled": true,
+  "proactive_mode": "low",
+  "proactive_quota_per_hour": 8,
+  "network_allowed": true,
+  "network_allowlist": [
+    "*"
+  ],
+  "front_back_mode": "front_drives_back",
+  "front_back_require_completion": true,
+  "tick_seconds": 60
+}
