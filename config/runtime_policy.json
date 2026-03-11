@@ -1,0 +1,5 @@
+{
+  "foreground_nonblocking": true,
+  "backend_continue_on_frontend_reply": true,
+  "note": "Frontend replies should not stop backend execution; backend continues and reports until success or confirmed failure."
+}
