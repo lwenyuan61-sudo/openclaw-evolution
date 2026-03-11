@@ -19,6 +19,15 @@ from typing import Any, Dict, List
 def run(raw: str, topic: str = "general") -> Dict[str, Any]:
     text = raw or ""
 
+    # Only allow user‑centric evolution topics
+    allowed_topics = {
+        "user_centric_self_evolution",
+        "self_evolution_stability_capability",
+        "self_enhancement_stability",
+    }
+    if topic and topic not in allowed_topics:
+        return {"ok": True, "skipped": True, "reason": "topic_not_allowed", "topic": topic}
+
     # Skip known rate-limit/error payloads
     low = text.lower()
     if "rate limit" in low or "code: 429" in low or "dashboard.exa.ai/api-keys" in low:
@@ -30,7 +39,15 @@ def run(raw: str, topic: str = "general") -> Dict[str, Any]:
 
     urls = re.findall(r"https?://\S+", text)
     urls = [u.rstrip("').,]>") for u in urls]
-    urls = urls[:5]
+    # normalize + unique
+    seen_u = set()
+    uniq = []
+    for u in urls:
+        if u in seen_u:
+            continue
+        seen_u.add(u)
+        uniq.append(u)
+    urls = uniq[:5]
 
     takeaway = "发现了与目标相关的新线索；建议按证据等级整理并评估风险。"
     if re.search(r"randomi[sz]ed|\brct\b", text, re.I):
