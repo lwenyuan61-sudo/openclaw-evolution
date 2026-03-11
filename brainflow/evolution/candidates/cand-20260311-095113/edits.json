@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_hint.v1\",\n  \"topic\": \"cli_arg_length\",\n  \"guidance\": [\n    \"Prefer writing large payloads to temporary files and pass file paths instead of long inline CLI arguments.\",\n    \"When invoking tools or scripts, use @file patterns or stdin redirection where supported.\",\n    \"Keep command lines minimal; move long JSON or prompts into files under workspace/temp.\"\n  ]\n}\n"
+  }
+]

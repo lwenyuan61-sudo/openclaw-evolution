@@ -1,0 +1,8 @@
+{
+  "name": "semantic_consolidate",
+  "description": "Write a compact semantic memory card from raw forage",
+  "inputs": {"raw": "text", "topic": "topic"},
+  "outputs": "{ok, title, urls, takeaway, path}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

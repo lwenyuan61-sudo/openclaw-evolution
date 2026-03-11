@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arglen_guard.v1\",\n  \"strategy\": \"prefer_tempfile\",\n  \"max_inline_bytes\": 2048,\n  \"notes\": \"Keep CLI args short on Windows by writing large payloads to temp files.\"\n}\n"
+  }
+]

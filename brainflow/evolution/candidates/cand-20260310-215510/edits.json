@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/llm_invocation_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_policy.v1\",\n  \"policy\": {\n    \"llm_invocation\": {\n      \"prefer_payload_files\": true,\n      \"max_inline_arg_chars\": 2048,\n      \"use_temp_files_for\": [\"prompt\", \"context\", \"attachments\"],\n      \"notes\": \"Avoid long inline CLI args on Windows; write payload to file and pass short file paths instead.\"\n    }\n  }\n}\n"
+  }
+]

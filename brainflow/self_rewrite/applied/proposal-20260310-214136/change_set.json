@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773150096,
+  "rationale": "Add a small procedural guardrail to reduce Windows CLI arg-length risk without touching code; keeps future tooling from constructing oversized command lines.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arg_length_guard.v1\",\n  \"max_command_chars\": 7000,\n  \"preferred_transport\": \"@file\",\n  \"notes\": \"When command-line payloads may exceed max_command_chars, write inputs to a temp file and pass the file path instead of inlining JSON/args.\"\n}"
+    }
+  ],
+  "risks": [
+    "Low; adds a new procedural config file only. No runtime behavior change until consumed by tooling."
+  ],
+  "expected_benefit": [
+    "Provides a clear limit and guidance for avoiding Windows CLI arg-length failures, improving execution reliability."
+  ],
+  "proposal_id": "proposal-20260310-214136"
+}

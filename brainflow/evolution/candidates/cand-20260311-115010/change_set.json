@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773200622,
+  "rationale": "Add a procedural policy file to prefer file-based LLM IO and cap CLI arg usage, reducing Windows command-line length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/llm_io_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.llm_io_policy.v1\",\n  \"prefer_file_io\": true,\n  \"use_temp_payloads\": true,\n  \"max_arg_bytes\": 2000,\n  \"notes\": \"Reduce Windows CLI arg length risk by favoring file-based payloads.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "If code does not read this policy yet, this change has no immediate effect."
+  ],
+  "expected_benefit": [
+    "Provides a single-source policy to guide safer LLM invocation with shorter CLI arguments."
+  ],
+  "proposal_id": "proposal-20260311-114342"
+}

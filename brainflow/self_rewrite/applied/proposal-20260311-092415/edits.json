@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_limits.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_limits.v1\",\n  \"windows\": {\n    \"max_arg_chars\": 6000,\n    \"prefer_stdin\": true,\n    \"prefer_tempfile\": true\n  },\n  \"notes\": \"Use stdin/tempfile for large payloads to avoid Windows CLI length limits.\"\n}\n"
+  }
+]

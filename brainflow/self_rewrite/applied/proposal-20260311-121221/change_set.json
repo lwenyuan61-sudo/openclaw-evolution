@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773202341,
+  "rationale": "Add a procedural hint to avoid long CLI args by using temp files/stdin, reducing Windows arg-length risk without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/arg_length_mitigation.json",
+      "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"title\": \"windows_cli_arg_length_mitigation\",\n  \"steps\": [\n    \"Prefer writing large prompts/payloads to temp files and passing file paths instead of inline CLI args.\",\n    \"Use stdin piping where supported to avoid command-line length limits.\",\n    \"When invoking tools, keep arguments concise and reference files in memory/ or workspace paths.\"\n  ],\n  \"applies_to\": [\"exec\", \"subprocess\", \"cli\"],\n  \"notes\": \"Windows has strict max command line length; file-based IO is safer.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Low risk: adds a new procedural note file only; no runtime behavior changes."
+  ],
+  "expected_benefit": [
+    "Reduced failures due to Windows CLI argument length limits in future procedural decisions."
+  ],
+  "proposal_id": "proposal-20260311-121221"
+}

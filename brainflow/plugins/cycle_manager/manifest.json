@@ -1,0 +1,8 @@
+{
+  "name": "cycle_manager",
+  "description": "Advance multi-stage loop and produce a subgoal packet",
+  "inputs": {"topic": "topic"},
+  "outputs": "{ok, stage, subgoal, state}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

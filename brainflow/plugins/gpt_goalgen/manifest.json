@@ -1,0 +1,8 @@
+{
+  "name": "gpt_goalgen",
+  "description": "Use OpenClaw GPT agent to generate one next subgoal (JSON)",
+  "inputs": {"goal": "goal text", "topic": "topic", "context": "context", "offline": "bool"},
+  "outputs": "{ok, subgoal, raw_text}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

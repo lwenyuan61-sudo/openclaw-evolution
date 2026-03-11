@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safe_defaults.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_safe_defaults.v1\",\n  \"notes\": \"Prefer file-based payloads (e.g., @file) for large data; keep CLI args short on Windows to avoid length limits.\"\n}\n"
+  }
+]

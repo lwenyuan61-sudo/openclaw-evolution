@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arglen_policy.v1\",\n  \"max_arg_chars\": 6000,\n  \"use_temp_files_over\": 2000,\n  \"temp_dir\": \"${WORKSPACE}\\\\brainflow\\\\tmp\",\n  \"notes\": \"When payloads exceed use_temp_files_over, write to temp file and pass file path instead of inline args.\"\n}\n"
+  }
+]

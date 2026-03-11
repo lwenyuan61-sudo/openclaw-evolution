@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773194532,
+  "rationale": "Add a small procedural policy file to prefer file-based payloads and short CLI args, reducing Windows command-line length risk without touching existing code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural_policy.v1\",\n  \"title\": \"Windows CLI Arg-Length Risk Reduction\",\n  \"rules\": [\n    \"Prefer writing large prompts/payloads to temp files and pass file paths instead of inline CLI args.\",\n    \"Avoid embedding long JSON in command lines; use @file or stdin when possible.\",\n    \"When invoking tools, keep argument lists minimal and favor short flags.\",\n    \"If a command might exceed Windows 8k/32k limits, split work into smaller steps.\"\n  ],\n  \"last_updated\": 1773194496\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy file may be unused until referenced by workflows."
+  ],
+  "expected_benefit": [
+    "Provides a lightweight, low-risk reference to guide future workflow edits toward shorter CLI arguments on Windows."
+  ],
+  "proposal_id": "proposal-20260311-100212"
+}

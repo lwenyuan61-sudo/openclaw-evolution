@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773196021,
+  "rationale": "Add a small procedural config file to enable safer, shorter CLI argument usage without touching code; this reduces Windows arg-length risk while respecting the one-edit constraint.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_mitigation.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_length_mitigation.v1\",\n  \"enable\": true,\n  \"prefer_file_inputs\": true,\n  \"max_arg_chars\": 7000,\n  \"notes\": \"Use temp files for large payloads and avoid long inline JSON to reduce Windows CLI arg-length risk.\"\n}"
+    }
+  ],
+  "risks": [
+    "May be ignored if no loader consumes this file; minimal risk as it is additive."
+  ],
+  "expected_benefit": [
+    "Provides a low-risk, discoverable knob for future workflow code to read and avoid long CLI args."
+  ],
+  "proposal_id": "proposal-20260311-102701"
+}

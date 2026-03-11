@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_length_guard.v1\",\n  \"max_command_chars\": 7000,\n  \"preferred_transport\": \"@file\",\n  \"notes\": \"When command-line payloads may exceed max_command_chars, write inputs to a temp file and pass the file path instead of inlining JSON/args.\"\n}"
+  }
+]

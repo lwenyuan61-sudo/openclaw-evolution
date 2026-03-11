@@ -1,0 +1,12 @@
+{
+  "name": "wa_send",
+  "description": "Send a WhatsApp message via OpenClaw CLI (openclaw message send)",
+  "inputs": {
+    "target": "E.164 number or group JID",
+    "message": "text to send",
+    "account": "optional accountId"
+  },
+  "outputs": "{ok, returncode, stdout, stderr, cmd}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

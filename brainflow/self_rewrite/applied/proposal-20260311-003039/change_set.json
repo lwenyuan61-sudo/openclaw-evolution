@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773160239,
+  "rationale": "Reduce Windows CLI arg-length risk by enforcing chunked argument handling and external payload file usage; choose procedural JSON to avoid touching code and keep a single full-file replacement.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_safety.v1\",\n  \"windows\": {\n    \"max_command_length\": 7000,\n    \"prefer_payload_files\": true,\n    \"payload_file_dir\": \"memory/procedural/payloads\",\n    \"chunk_args\": true,\n    \"chunk_size\": 50,\n    \"fallback_to_stdin\": true\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "If consumers of this config are not implemented, the file will be inert and no behavior change will occur."
+  ],
+  "expected_benefit": [
+    "Clear, low-risk configuration to guide shorter CLI invocations and payload-file usage, lowering the probability of Windows command-length failures."
+  ],
+  "proposal_id": "proposal-20260311-003039"
+}

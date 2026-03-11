@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_safety.v1\",\n  \"prefer_payload_file\": true,\n  \"max_inline_chars\": 2048,\n  \"notes\": \"When invoking tools or runners on Windows, write large JSON payloads to temp files and pass paths instead of inline args.\"\n}"
+  }
+]

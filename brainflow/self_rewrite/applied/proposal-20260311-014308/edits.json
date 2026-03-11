@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"cli_arg_length_guard\",\n  \"goal\": \"Reduce Windows CLI argument-length failures by preferring temp files and short commands.\",\n  \"rules\": [\n    \"When constructing CLI commands, avoid long inline JSON or prompts; write payloads to a temp file and pass the file path.\",\n    \"Prefer @file or --input-file style flags when available.\",\n    \"If a command line exceeds ~6k characters, refactor to use file inputs or environment variables.\",\n    \"Keep paths short (use workspace-relative paths when possible).\"\n  ]\n}\n"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773193646,
+  "rationale": "Add a procedural guard to minimize Windows CLI argument length failures by preferring file-based inputs over long inline arguments.",
+  "edits": [
+    {
+      "path": "memory/procedural/windows_cli_arglen_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.proc_rule.v1\",\n  \"name\": \"windows_cli_arglen_guard\",\n  \"priority\": 90,\n  \"when\": {\n    \"os\": \"windows\",\n    \"channel\": \"cli\"\n  },\n  \"rule\": {\n    \"avoid_inline_args\": true,\n    \"max_inline_arg_chars\": 2000,\n    \"preferred_patterns\": [\n      \"write payloads to temp files and pass file paths\",\n      \"use config files for large JSON\",\n      \"split large inputs across files\"\n    ],\n    \"fallback\": \"if inline args exceed limit, switch to file-based input or abort with a concise error\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "If downstream components do not consume procedural rules, this change will have no effect."
+  ],
+  "expected_benefit": [
+    "Reduces Windows CLI arg-length errors by guiding workflows to use file-based inputs for large payloads."
+  ],
+  "proposal_id": "proposal-20260311-094726"
+}

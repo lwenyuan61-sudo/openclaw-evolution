@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773147711,
+  "rationale": "Add a procedural guardrail to keep LLM prompts and tool inputs file-based and compact, reducing Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/llm_io_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"llm_io_arglength_guardrail\",\n  \"version\": 1,\n  \"rules\": [\n    {\n      \"id\": \"prefer_file_payloads\",\n      \"when\": \"invoking tools or subprocesses with large payloads\",\n      \"do\": \"write payloads to a temp file and pass only the file path; keep CLI args short\"\n    },\n    {\n      \"id\": \"cap_inline_text\",\n      \"when\": \"building inline arguments\",\n      \"do\": \"limit inline text to <= 1024 chars; otherwise switch to file path\"\n    }\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "Procedure file may be ignored by older runners that do not consult procedural memory."
+  ],
+  "expected_benefit": [
+    "Lower risk of Windows CLI arg-length failures and more consistent tool invocation behavior."
+  ],
+  "proposal_id": "proposal-20260310-210151"
+}

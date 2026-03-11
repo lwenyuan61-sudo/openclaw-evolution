@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773195874,
+  "rationale": "Add a procedural policy to enforce short CLI arguments by routing large payloads through temp files to reduce Windows arg-length failures.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arglen_policy.v1\",\n  \"max_arg_chars\": 6000,\n  \"use_temp_files_over\": 2000,\n  \"temp_dir\": \"${WORKSPACE}\\\\brainflow\\\\tmp\",\n  \"notes\": \"When payloads exceed use_temp_files_over, write to temp file and pass file path instead of inline args.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Requires runtime adoption by callers; unused policy file alone has no effect until referenced."
+  ],
+  "expected_benefit": [
+    "Provides a clear, centralized threshold to avoid Windows CLI arg-length limits and reduce command failures."
+  ],
+  "proposal_id": "proposal-20260311-102434"
+}

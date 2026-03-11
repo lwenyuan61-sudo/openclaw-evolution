@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_safety.v1\",\n  \"max_arg_chars\": 6000,\n  \"max_total_chars\": 20000,\n  \"prefer_file_payload\": true,\n  \"truncate_long_fields\": true,\n  \"truncate_strategy\": \"head-tail\",\n  \"head_chars\": 2000,\n  \"tail_chars\": 1000,\n  \"notes\": \"Central policy for any CLI invocations; keep prompts compact to avoid Windows argv limits.\"\n}\n"
+  }
+]

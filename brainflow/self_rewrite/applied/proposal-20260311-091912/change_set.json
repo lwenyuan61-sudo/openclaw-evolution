@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773191952,
+  "rationale": "Add a small procedural config note to bias future steps toward file-based payloads, reducing Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.v1\",\n  \"name\": \"cli_arg_safety\",\n  \"goal\": \"Reduce Windows CLI argument-length risk by preferring file-based payloads.\",\n  \"rules\": [\n    \"Prefer writing large LLM prompts or payloads to temp files and pass file paths instead of inline CLI args.\",\n    \"Avoid embedding long JSON in command arguments; use @file or stdin where supported.\",\n    \"Keep per-command arguments short; split work into multiple steps if needed.\"\n  ],\n  \"scope\": \"global\"\n}"
+    }
+  ],
+  "risks": [
+    "May be ignored by code paths that do not consult procedural memory."
+  ],
+  "expected_benefit": [
+    "Guides future workflow steps toward safer, shorter CLI calls, reducing arg-length failures on Windows."
+  ],
+  "proposal_id": "proposal-20260311-091912"
+}

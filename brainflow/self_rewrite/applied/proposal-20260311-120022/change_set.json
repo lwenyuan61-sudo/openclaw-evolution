@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773201622,
+  "rationale": "Reduce Windows CLI argument-length risk by centralizing long options into a minimal procedural JSON profile file, avoiding lengthy command-line strings.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_profile.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_profile.v1\",\n  \"defaults\": {\n    \"use_response_file\": true,\n    \"max_inline_chars\": 1200,\n    \"prefer_tempfile\": true\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "If the profile is unused by current CLI wrappers, no effect until integrated."
+  ],
+  "expected_benefit": [
+    "Lower risk of Windows command-line length limits causing failures; safer defaults for long arguments."
+  ],
+  "proposal_id": "proposal-20260311-120022"
+}

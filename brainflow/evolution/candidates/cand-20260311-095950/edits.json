@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_mitigation.json",
+    "content": "{\n  \"schema\": \"brainflow.proc_policy.v1\",\n  \"name\": \"cli_arg_length_mitigation\",\n  \"applies_to\": [\"exec\", \"subprocess\", \"shell\"],\n  \"rules\": {\n    \"max_cmdline_chars\": 7000,\n    \"prefer_temp_files\": true,\n    \"temp_file_hint\": \"Use @file or stdin when args would exceed max_cmdline_chars.\"\n  }\n}\n"
+  }
+]

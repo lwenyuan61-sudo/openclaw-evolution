@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_mitigation.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_length_mitigation.v1\",\n  \"enable\": true,\n  \"prefer_file_inputs\": true,\n  \"max_arg_chars\": 7000,\n  \"notes\": \"Use temp files for large payloads and avoid long inline JSON to reduce Windows CLI arg-length risk.\"\n}"
+  }
+]

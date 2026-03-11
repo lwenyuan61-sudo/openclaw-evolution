@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773200105,
+  "rationale": "Add a procedural policy to avoid long CLI arguments by preferring file-based payloads and setting conservative inline limits. This reduces Windows arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/arg_length_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.arg_length_guard.v1\",\n  \"max_inline_chars\": 8000,\n  \"max_inline_bytes\": 12000,\n  \"prefer_file_payload\": true,\n  \"file_payload_dir\": \"memory/procedural\",\n  \"notes\": \"When composing CLI calls, write large JSON/text to a temp file and pass the file path instead of inline args. Use conservative thresholds to avoid Windows CreateProcess limits.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy may be ignored by components that do not consult this file; no runtime effect until adopted."
+  ],
+  "expected_benefit": [
+    "Provides a documented, low-risk guardrail for avoiding Windows CLI arg-length failures and encourages file-based payload usage."
+  ],
+  "proposal_id": "proposal-20260311-113505"
+}

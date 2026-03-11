@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.proc_guard.v1\",\n  \"goal\": \"Reduce Windows CLI arg-length risk\",\n  \"prefer_file_payloads\": true,\n  \"max_cli_arg_chars\": 6000,\n  \"fallback\": {\n    \"action\": \"write_payload_file\",\n    \"filename_pattern\": \"payload_%Y%m%d_%H%M%S.json\"\n  }\n}\n"
+  }
+]

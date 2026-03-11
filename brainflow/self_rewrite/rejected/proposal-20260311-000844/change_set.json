@@ -1,0 +1,14 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773158924,
+  "rationale": "Add a small procedural config to cap CLI arg length and prefer temp-file payloads, reducing Windows command-line length risk without touching other files.",
+  "edits": [],
+  "risks": [
+    "If unused by runtime, this has no effect.",
+    "If runtime expects a different schema name, it may ignore the file."
+  ],
+  "expected_benefit": [
+    "Lower probability of Windows CLI arg-length failures by guiding payloads to tempfile usage."
+  ],
+  "proposal_id": "proposal-20260311-000844"
+}

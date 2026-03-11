@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/strategies.json",
+    "content": "{\n  \"schema\": \"brainflow.strategies.v1\",\n  \"t\": 1773139600,\n  \"principles\": [\n    \"Prefer reversible changes.\",\n    \"Prefer actions that increase execution reliability.\",\n    \"When uncertain, produce a small, testable deliverable.\",\n    \"Minimize inline text; prefer file/path references and small excerpts to reduce Windows CLI arg-length risk.\"\n  ],\n  \"policies\": {\n    \"self_modify\": {\n      \"enabled\": true,\n      \"allowlist\": [\n        \"workflows/*.yaml\",\n        \"plugins/**/*.py\",\n        \"core/**/*.py\",\n        \"memory/procedural/*.json\"\n      ]\n    },\n    \"external_actions\": {\n      \"enabled\": false,\n      \"allowlist\": []\n    }\n  },\n  \"playbooks\": {\n    \"json_parse_fail\": [\n      \"extract first {...} block\",\n      \"repair with JSON-only prompt\",\n      \"fallback to safe subgoal\"\n    ],\n    \"loop_detected\": [\n      \"increase interval\",\n      \"introduce novelty constraint\",\n      \"pause and summarize\"\n    ],\n    \"strategy_json_parse_failed\": [\n      \"fallback to defaults\"\n    ]\n  },\n  \"next_cycle_adjustments\": [],\n  \"sources\": [\n    \"deterministic\"\n  ]\n}\n"
+  }
+]

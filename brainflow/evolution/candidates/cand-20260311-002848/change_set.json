@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773160099,
+  "rationale": "Add a procedural config to keep CLI payloads compact by preferring temp-file inputs and short flags, reducing Windows arg-length risk without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arglen_guard.v1\",\n  \"strategy\": \"prefer_tempfile\",\n  \"max_inline_bytes\": 2048,\n  \"notes\": \"Keep CLI args short on Windows by writing large payloads to temp files.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "New procedural file may be unused until referenced by a workflow; no behavioral change if not read."
+  ],
+  "expected_benefit": [
+    "Provides a lightweight, low-risk guardrail to reduce command-line length failures once integrated."
+  ],
+  "proposal_id": "proposal-20260311-002819"
+}

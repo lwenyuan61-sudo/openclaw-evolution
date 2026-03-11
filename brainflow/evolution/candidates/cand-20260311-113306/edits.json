@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_policy.v1\",\n  \"t\": 1773199921,\n  \"policy\": {\n    \"prefer_response_files\": true,\n    \"max_inline_arg_length\": 2048,\n    \"avoid_large_inline_json\": true,\n    \"notes\": \"When constructing CLI calls, write large JSON/text to temp files and pass file paths instead of inline args.\"\n  }\n}\n"
+  }
+]

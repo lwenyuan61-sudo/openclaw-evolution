@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_arglen_guard.v1\",\n  \"max_arg_chars\": 7000,\n  \"prefer_file_payload\": true,\n  \"file_payload_fields\": [\"prompt\", \"context\", \"messages\", \"input\"],\n  \"notes\": \"On Windows, avoid long command lines by writing payload to temp files and passing file paths instead.\"\n}"
+  }
+]

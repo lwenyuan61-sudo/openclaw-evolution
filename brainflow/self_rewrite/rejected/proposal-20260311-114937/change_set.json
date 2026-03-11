@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773200977,
+  "rationale": "Add a small procedural policy file to prefer file-based payloads over long CLI args, reducing Windows argument-length risk without touching other files.",
+  "edits": [],
+  "risks": [
+    "Policy file may be ignored if not yet wired into workflow logic."
+  ],
+  "expected_benefit": [
+    "Provides a clear, low-risk procedural directive to shift large inputs to files, lowering CLI arg-length failures on Windows."
+  ],
+  "proposal_id": "proposal-20260311-114937"
+}

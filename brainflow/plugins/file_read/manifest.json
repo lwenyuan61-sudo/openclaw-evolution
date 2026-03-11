@@ -1,0 +1,8 @@
+{
+  "name": "file_read",
+  "description": "Read a text file under brainflow/ (path-restricted)",
+  "inputs": {"rel_path": "relative path", "max_chars": "max characters"},
+  "outputs": "{ok, path, text}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

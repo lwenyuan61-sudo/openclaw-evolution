@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773192762,
+  "rationale": "Add a small procedural guard to prefer file-based payloads to reduce Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_arglen_guard.v1\",\n  \"policy\": {\n    \"prefer_file_payloads\": true,\n    \"max_inline_arg_bytes\": 6000,\n    \"fallback\": \"write_temp_file\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "May require follow-up wiring in code to consume this procedural setting; no behavior change until read by runtime."
+  ],
+  "expected_benefit": [
+    "Provides a low-risk, file-based configuration hook to steer future changes away from long inline CLI arguments on Windows."
+  ],
+  "proposal_id": "proposal-20260311-093242"
+}

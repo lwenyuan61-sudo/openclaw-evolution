@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773193283,
+  "rationale": "Add a small procedural guard to reduce Windows CLI arg-length risk by encouraging config via file inputs instead of long inline args.",
+  "edits": [
+    {
+      "path": "memory/procedural/arg_length_guard.json",
+      "content": "{\"schema\":\"brainflow.procedural.v1\",\"name\":\"arg_length_guard\",\"rules\":[\"Prefer file-based payloads over long inline CLI args on Windows.\",\"If a CLI command would exceed typical length limits, write inputs to a temp file and pass the file path instead.\",\"Keep command invocations concise; avoid embedding large JSON in command line.\"]}"
+    }
+  ],
+  "risks": [
+    "New rule may require downstream tooling to honor it; otherwise no effect."
+  ],
+  "expected_benefit": [
+    "Lower chance of Windows CLI failures due to long arguments; more robust execution."
+  ],
+  "proposal_id": "proposal-20260311-094123"
+}

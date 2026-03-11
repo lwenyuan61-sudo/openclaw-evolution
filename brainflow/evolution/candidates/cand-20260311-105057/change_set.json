@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773197416,
+  "rationale": "Add a small procedural config stub to encourage shorter CLI invocations and reduce Windows arg-length risk without touching large files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglength_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_arglength_guard.v1\",\n  \"guidelines\": {\n    \"prefer_short_args\": true,\n    \"max_arg_chars_hint\": 7000,\n    \"use_file_payloads\": true,\n    \"notes\": \"Keep command lines short on Windows; pass large prompts via files or temp artifacts.\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "If unused by runtime, change has no effect."
+  ],
+  "expected_benefit": [
+    "Provides a lightweight, local reference to favor file-based payloads and shorter CLI argument usage, reducing risk of Windows arg-length errors."
+  ],
+  "proposal_id": "proposal-20260311-105016"
+}

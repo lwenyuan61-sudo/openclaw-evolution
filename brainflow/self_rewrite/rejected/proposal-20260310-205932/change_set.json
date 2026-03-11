@@ -1,0 +1,11 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773147572,
+  "rationale": "No safe single-file full replacement can be produced without reading additional files; to avoid Windows CLI arg-length risk and comply with constraints, no edit is applied.",
+  "edits": [],
+  "risks": [
+    "No improvement will be realized until a safe edit can be prepared."
+  ],
+  "expected_benefit": "Avoids unintended overwrites and CLI arg-length issues while remaining compliant with allowlist and max edit constraints.",
+  "proposal_id": "proposal-20260310-205932"
+}

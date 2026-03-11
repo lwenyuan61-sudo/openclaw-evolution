@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.arg_length_guard.v1\",\n  \"max_arg_chars\": 6000,\n  \"prefer_file_payloads\": true,\n  \"truncate_overlong_inline_payloads\": true,\n  \"notes\": \"Use file-based payloads when possible to avoid Windows CLI arg-length issues.\"\n}\n"
+  }
+]

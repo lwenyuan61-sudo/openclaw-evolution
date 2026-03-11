@@ -1,0 +1,8 @@
+{
+  "name": "note_write",
+  "description": "Append a timestamped bullet note to brainflow/memory/<filename>",
+  "inputs": {"filename": "markdown file name", "text": "note text"},
+  "outputs": "{ok, path}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

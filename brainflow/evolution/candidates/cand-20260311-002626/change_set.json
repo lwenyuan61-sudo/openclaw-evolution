@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773159960,
+  "rationale": "Reduce Windows CLI argument-length risk by standardizing LLM invocation to prefer payload files over long inline args, without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/llm_invocation_defaults.json",
+      "content": "{\n  \"schema\": \"brainflow.llm_invocation_defaults.v1\",\n  \"prefer_payload_file\": true,\n  \"max_inline_chars\": 8000,\n  \"arg_pack_mode\": \"file\",\n  \"notes\": \"Use temp payload files to avoid Windows CLI arg-length limits; keep inline args short.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Downstream code may ignore or not yet consume this procedural defaults file; no behavior change until wired."
+  ],
+  "expected_benefit": [
+    "Provides a centralized, low-risk default to minimize inline CLI args, reducing failure risk on Windows."
+  ],
+  "proposal_id": "proposal-20260311-002600"
+}

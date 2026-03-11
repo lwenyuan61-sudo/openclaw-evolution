@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglength_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_policy.v1\",\n  \"name\": \"cli_arglength_policy\",\n  \"priority\": 80,\n  \"rules\": [\n    {\n      \"id\": \"prefer_response_files\",\n      \"when\": \"command_payload_bytes_gt_4096\",\n      \"action\": \"write_payload_to_temp_file_and_pass_path\"\n    },\n    {\n      \"id\": \"avoid_inline_json\",\n      \"when\": \"payload_contains_json\",\n      \"action\": \"use_file_flag_instead_of_inline\"\n    }\n  ]\n}\n"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "gpt_decompose",
+  "description": "Use OpenClaw GPT agent to decompose a subgoal into child subgoals",
+  "inputs": {"parent": "parent subgoal dict", "offline": "bool"},
+  "outputs": "{ok, children, raw_text}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

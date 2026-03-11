@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773192255,
+  "rationale": "Introduce a small procedural config to encourage stdin/file-based payloads and cap CLI arg size, reducing Windows command-line length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_limits.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_limits.v1\",\n  \"windows\": {\n    \"max_arg_chars\": 6000,\n    \"prefer_stdin\": true,\n    \"prefer_tempfile\": true\n  },\n  \"notes\": \"Use stdin/tempfile for large payloads to avoid Windows CLI length limits.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "If no code reads this config yet, it will be inert until integrated."
+  ],
+  "expected_benefit": [
+    "Provides a centralized, lightweight constraint to guide future CLI payload handling toward safer, shorter commands on Windows."
+  ],
+  "proposal_id": "proposal-20260311-092415"
+}

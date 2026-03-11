@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_guard.json",
+    "content": "{\"schema\":\"brainflow.procedural.cli_arg_guard.v1\",\"prefer_file_payloads\":true,\"max_inline_arg_chars\":1200,\"notes\":\"When constructing CLI calls, write large payloads to temp files and pass file paths instead of long inline args.\"}"
+  }
+]

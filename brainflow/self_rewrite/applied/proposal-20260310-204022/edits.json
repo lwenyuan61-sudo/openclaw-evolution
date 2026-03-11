@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglength_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arglength_policy.v1\",\n  \"max_inline_chars\": 2000,\n  \"max_arg_total_chars\": 6000,\n  \"prefer_file_inputs\": true,\n  \"file_input_fields\": [\"prompt\", \"context\", \"payload\", \"input_json\", \"instructions\"],\n  \"notes\": \"When estimated CLI args exceed max_arg_total_chars, write payload to a temp file and pass a single file path argument instead of inline JSON.\"\n}"
+  }
+]

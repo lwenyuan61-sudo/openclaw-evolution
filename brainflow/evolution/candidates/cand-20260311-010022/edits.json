@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_length_policy.v1\",\n  \"windows\": {\n    \"max_cmd_chars\": 6000,\n    \"prefer_file_args\": true,\n    \"argfile_extensions\": [\".json\", \".yaml\", \".txt\"],\n    \"notes\": \"Use @argfile or file-path inputs for large prompts/payloads to avoid Win32 command line limits.\"\n  }\n}\n"
+  }
+]

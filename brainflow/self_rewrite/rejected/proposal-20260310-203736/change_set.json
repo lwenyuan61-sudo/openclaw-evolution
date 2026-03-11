@@ -1,0 +1,11 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773146256,
+  "rationale": "No safe single-file full replacement available without reading target content; returning no-op change set to comply with constraints.",
+  "edits": [],
+  "risks": [
+    "No changes applied; underlying issues remain."
+  ],
+  "expected_benefit": "Avoids risky overwrite while honoring constraints.",
+  "proposal_id": "proposal-20260310-203736"
+}

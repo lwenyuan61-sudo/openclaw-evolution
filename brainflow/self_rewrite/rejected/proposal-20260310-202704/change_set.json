@@ -1,0 +1,11 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773145624,
+  "rationale": "No safe single-file change can be proposed without reading additional local files. To avoid risky assumptions and keep within the one-edit constraint, no edits are included.",
+  "edits": [],
+  "risks": [
+    "No immediate improvement applied."
+  ],
+  "expected_benefit": "Avoids introducing incorrect changes without sufficient context.",
+  "proposal_id": "proposal-20260310-202704"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773161828,
+  "rationale": "Add a small procedural config to prefer response files/short args on Windows, reducing CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/windows_cli_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.windows_cli_policy.v1\",\n  \"prefer_response_files\": true,\n  \"max_inline_args\": 40,\n  \"max_inline_chars\": 6000,\n  \"notes\": \"Prefer response files and shorter inline args on Windows to reduce command-line length failures.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "May be ignored by tooling if not yet wired, yielding no effect."
+  ],
+  "expected_benefit": [
+    "Provides a centralized policy hint for future CLI construction to minimize Windows command-line length failures."
+  ],
+  "proposal_id": "proposal-20260311-005708"
+}

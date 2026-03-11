@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/self_modify_payload_latest.json",
+    "content": "{\n  \"schema\": \"brainflow.self_modify_payload.v1\",\n  \"t\": 1773148291,\n  \"goal\": \"Improve BrainFlow reliability; reduce JSON parse failures; keep doer-mode robust.\",\n  \"allowlist\": [\n    \"workflows/*.yaml\",\n    \"plugins/**/*.py\",\n    \"core/**/*.py\",\n    \"memory/procedural/*.json\"\n  ],\n  \"signals\": {\n    \"last_scorecard_overall\": 75,\n    \"last_scorecard_pass\": true,\n    \"last_scorecard_notes\": \"heuristic_fallback_llm_eval_failed\",\n    \"last_scorecard_evidence\": [\n      \"pending_n=16\",\n      \"repeatCount~0\",\n      \"executed_n=3\"\n    ]\n  },\n  \"output_schema\": {\n    \"schema\": \"brainflow.change_set.v2\",\n    \"keys\": [\n      \"schema\",\n      \"t\",\n      \"rationale\",\n      \"edits\",\n      \"risks\",\n      \"expected_benefit\"\n    ],\n    \"constraints\": {\n      \"max_files\": 1,\n      \"full_file_replacement\": true\n    }\n  }\n}"
+  }
+]

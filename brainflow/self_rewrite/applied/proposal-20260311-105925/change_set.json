@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773197965,
+  "rationale": "Reduce Windows CLI arg-length risk by switching LLM invocation to file-based payloads and minimizing inline prompt size in a centralized procedural config.",
+  "edits": [
+    {
+      "path": "memory/procedural/llm_invocation_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.llm_invocation_policy.v1\",\n  \"use_file_payload\": true,\n  \"inline_prompt_max_chars\": 1200,\n  \"prefer_prompt_file\": true,\n  \"notes\": \"Constrain inline prompt size to reduce Windows CLI length issues; send full payload via temp file.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "If consumers do not read this policy file, no behavior change; if they do and require inline prompts, they may truncate overly long prompts."
+  ],
+  "expected_benefit": [
+    "Lower likelihood of Windows CLI arg-length failures and more reliable LLM execution with large payloads."
+  ],
+  "proposal_id": "proposal-20260311-105925"
+}

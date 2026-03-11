@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_guard.v1\",\n  \"name\": \"cli_arg_length_guard\",\n  \"goal\": \"Reduce Windows CLI argument-length risk by preferring temp files for large payloads.\",\n  \"rules\": [\n    {\n      \"id\": \"prefer_temp_file\",\n      \"when\": \"payload_chars_gt_2000\",\n      \"action\": \"write_temp_file_and_pass_path\",\n      \"notes\": \"Avoid inline JSON/string args when payload is large; pass file path instead.\"\n    }\n  ]\n}"
+  }
+]

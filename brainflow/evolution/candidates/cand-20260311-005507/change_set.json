@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773161662,
+  "rationale": "Introduce a small procedural config file to enforce file-based payload passing and shorter command lines, reducing Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_prefs.json",
+      "content": "{\n  \"use_temp_payload_files\": true,\n  \"max_inline_args\": 16,\n  \"prefer_stdin\": true,\n  \"notes\": \"Keep CLI arguments short on Windows; prefer temp files or stdin.\"\n}"
+    }
+  ],
+  "risks": [
+    "May be unused until referenced by runtime; no functional change if ignored."
+  ],
+  "expected_benefit": [
+    "Provides a standard place to read CLI-length safeguards, enabling future logic to avoid long command lines."
+  ],
+  "proposal_id": "proposal-20260311-005422"
+}

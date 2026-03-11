@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_length_policy.v1\",\n  \"prefer_file_payload\": true,\n  \"max_inline_bytes\": 4096,\n  \"notes\": \"When constructing commands, write large payloads to temp files and pass file paths instead of long inline JSON/args.\"\n}\n"
+  }
+]

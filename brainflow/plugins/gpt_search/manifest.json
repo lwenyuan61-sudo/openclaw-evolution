@@ -1,0 +1,8 @@
+{
+  "name": "gpt_search",
+  "description": "Use OpenClaw GPT agent + web_search tool to fetch sources",
+  "inputs": {"query": "search query", "max_results": "int"},
+  "outputs": "{ok, data}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

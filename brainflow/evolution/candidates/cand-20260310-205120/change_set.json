@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773147059,
+  "rationale": "Add a small procedural policy file that instructs the system to prefer file-based payloads when arguments are large, reducing Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_length_policy.v1\",\n  \"max_arg_chars\": 6000,\n  \"strategy\": \"prefer_file_payloads\",\n  \"notes\": \"When payloads exceed max_arg_chars, write to a temp file and pass the file path instead of long CLI args to avoid Windows CreateProcess limits.\"\n}"
+    }
+  ],
+  "risks": [
+    "If any executor ignores this policy file, behavior will be unchanged."
+  ],
+  "expected_benefit": [
+    "Reduced risk of Windows CLI argument-length errors while keeping changes localized to a single, small procedural config file."
+  ],
+  "proposal_id": "proposal-20260310-205059"
+}

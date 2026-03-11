@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773159729,
+  "rationale": "Add a lightweight procedural guard config to cap CLI arg length and prefer file-based payloads, reducing Windows argument-length failures without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_arglen_guard.v1\",\n  \"max_arg_chars\": 7000,\n  \"prefer_file_payload\": true,\n  \"file_payload_fields\": [\"prompt\", \"context\", \"messages\", \"input\"],\n  \"notes\": \"On Windows, avoid long command lines by writing payload to temp files and passing file paths instead.\"\n}"
+    }
+  ],
+  "risks": [
+    "If downstream code ignores this config, behavior remains unchanged."
+  ],
+  "expected_benefit": [
+    "Lower rate of Windows CLI argument-length errors and more reliable LLM/tool invocation."
+  ],
+  "proposal_id": "proposal-20260311-002209"
+}

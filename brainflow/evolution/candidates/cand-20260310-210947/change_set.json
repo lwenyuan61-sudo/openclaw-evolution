@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773148137,
+  "rationale": "Introduce a procedural policy to prefer file-based payloads and short temp paths to reduce Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.policy.v1\",\n  \"name\": \"cli_arg_length_mitigation\",\n  \"rules\": [\n    {\n      \"id\": \"prefer_file_payloads\",\n      \"when\": \"command_args_length_gt_6k\",\n      \"action\": \"write_payload_to_file_and_pass_path\"\n    },\n    {\n      \"id\": \"use_short_paths\",\n      \"when\": \"windows\",\n      \"action\": \"prefer_short_temp_paths\"\n    }\n  ],\n  \"notes\": \"Policy only; no runtime enforcement unless referenced by workflows or code.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy may be unused until referenced by workflow/code; no immediate effect."
+  ],
+  "expected_benefit": [
+    "Provides a standard place to anchor CLI arg-length mitigation with minimal risk and no code changes."
+  ],
+  "proposal_id": "proposal-20260310-210857"
+}

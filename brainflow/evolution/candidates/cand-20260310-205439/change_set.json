@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773147256,
+  "rationale": "Introduce a small procedural policy file to minimize Windows CLI argument length by preferring temp-file inputs over long inline args.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arg_policy.v1\",\n  \"windows\": {\n    \"prefer_temp_files\": true,\n    \"max_inline_arg_chars\": 6000,\n    \"max_total_cmd_chars\": 7500,\n    \"notes\": \"When payloads exceed limits, write to temp file and pass filepath instead of inline JSON/string args.\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy file may be ignored if no consumer reads it yet."
+  ],
+  "expected_benefit": [
+    "Reduces risk of Windows command-line length errors by formalizing a temp-file preference for long inputs."
+  ],
+  "proposal_id": "proposal-20260310-205416"
+}

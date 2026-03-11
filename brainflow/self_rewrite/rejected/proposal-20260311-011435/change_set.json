@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773162875,
+  "rationale": "Add a small procedural config that enforces file-based payloads and chunking guidance to minimize Windows CLI arg-length risk without touching code or reading other files.",
+  "edits": [],
+  "risks": [
+    "If procedure is not yet consumed by runtime, change has no effect."
+  ],
+  "expected_benefit": [
+    "Lower chance of CLI arg-length failures; clearer guidance for file-based payload handling."
+  ],
+  "proposal_id": "proposal-20260311-011435"
+}

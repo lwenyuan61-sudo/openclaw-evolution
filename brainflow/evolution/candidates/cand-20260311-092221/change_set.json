@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773192102,
+  "rationale": "Introduce a lightweight procedural config to encourage shorter CLI invocations and payload indirection, reducing Windows command-line length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_args_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_args_policy.v1\",\n  \"max_cmdline_chars_soft\": 6000,\n  \"prefer_file_payload\": true,\n  \"prefer_env_payload\": true,\n  \"notes\": \"When constructing commands, avoid long inline JSON; write payloads to temp files or pass via env. This reduces Windows CLI length failures.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Downstream components may ignore this policy if not yet implemented; no functional change unless read."
+  ],
+  "expected_benefit": [
+    "Provides a clear, centralized policy for minimizing long CLI arguments, lowering risk of Windows command-line length errors when adopted."
+  ],
+  "proposal_id": "proposal-20260311-092142"
+}

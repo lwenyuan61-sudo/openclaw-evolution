@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773149201,
+  "rationale": "LLM output not JSON (repair failed); no change proposed.",
+  "edits": [],
+  "risks": [
+    "llm_json_parse_failed"
+  ],
+  "expected_benefit": [],
+  "llm_parse_error": "no_json_start",
+  "llm_text_tail": "⚠️ API rate limit reached. Please try again later.",
+  "proposal_id": "proposal-20260310-212702"
+}

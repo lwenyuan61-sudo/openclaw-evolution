@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_mitigation.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_length_mitigation.v1\",\n  \"enabled\": true,\n  \"guidance\": {\n    \"prefer_file_inputs\": true,\n    \"prefer_temp_payload_files\": true,\n    \"max_inline_chars\": 2000,\n    \"notes\": \"When constructing CLI calls, write large payloads to temp files and pass file paths instead of long inline args.\"\n  }\n}\n"
+  }
+]

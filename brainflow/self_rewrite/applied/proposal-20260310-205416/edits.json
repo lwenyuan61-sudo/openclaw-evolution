@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_policy.v1\",\n  \"windows\": {\n    \"prefer_temp_files\": true,\n    \"max_inline_arg_chars\": 6000,\n    \"max_total_cmd_chars\": 7500,\n    \"notes\": \"When payloads exceed limits, write to temp file and pass filepath instead of inline JSON/string args.\"\n  }\n}\n"
+  }
+]

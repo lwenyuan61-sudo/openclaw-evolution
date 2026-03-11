@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773150529,
+  "rationale": "Add a minimal procedural config to prefer file-based payloads and short command lines, reducing Windows CLI argument-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_safe_defaults.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_safe_defaults.v1\",\n  \"notes\": \"Prefer file-based payloads (e.g., @file) for large data; keep CLI args short on Windows to avoid length limits.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Low. New config file may be unused until referenced; no behavior change unless consumed."
+  ],
+  "expected_benefit": [
+    "Provides a clear, reusable procedural hint to keep CLI argument lengths short, lowering risk of Windows command-line failures."
+  ],
+  "proposal_id": "proposal-20260310-214849"
+}

@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_arglen_guard.v1\",\n  \"policy\": {\n    \"prefer_file_payloads\": true,\n    \"max_inline_arg_bytes\": 6000,\n    \"fallback\": \"write_temp_file\"\n  }\n}\n"
+  }
+]

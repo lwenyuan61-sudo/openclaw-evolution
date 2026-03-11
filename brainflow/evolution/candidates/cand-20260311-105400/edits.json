@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safe_defaults.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_safe_defaults.v1\",\n  \"force_file_payloads\": true,\n  \"max_cli_arg_bytes\": 6000,\n  \"notes\": \"Use temp files for large prompts to avoid Windows command-line length limits.\"\n}\n"
+  }
+]

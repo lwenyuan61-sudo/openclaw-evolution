@@ -1,0 +1,23 @@
+脑潮（NaoChao）快捷方式使用方法
+
+你桌面上建议放两个快捷方式：
+
+A) 启动器（带 3 个按钮）：
+- 目标文件：C:\Users\15305\.openclaw\workspace\brainflow\naochao_launcher.bat
+- 用法：双击桌面快捷方式 -> 出现窗口 -> 点按钮
+
+按钮含义：
+1) 启动 OpenClaw 网关：启动 WhatsApp/Hook/主框架（会弹出一个黑窗口）
+2) 打开 Dashboard：浏览器打开 http://127.0.0.1:18789/
+3) 启动 脑潮持续运行：启动脑潮 daemon + 亲碗“持续思考/主动说话”模式（会弹出两个黑窗口）
+
+B) （可选）单独启动网关：
+- start_gateway.bat
+
+注意：你当前不是 service 模式，所以“restart/stop”类命令不一定生效。
+如果要重启网关：去网关黑窗口 Ctrl+C，再重新运行 openclaw gateway。
+
+集成模式说明（重要）：
+- 已禁用 brainflow-bridge（不再自动接管 WhatsApp 入站/不再自动注入深思）。
+- 价值判断与回复策略由亲碗（OpenClaw 主框架）负责。
+- 脑潮作为后台进程运行：持续思考/外网检索/写记忆；当亲碗需要更深思时再调用它（后续可再自动化）。

@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arg_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.arg_guard.v1\",\n  \"max_cli_arg_chars\": 6000,\n  \"max_inline_payload_chars\": 4000,\n  \"prefer_tempfile_over_inline\": true,\n  \"notes\": \"Heuristic limits for Windows cmd/ps argument length; keep payloads short to avoid spawn failures.\"\n}\n"
+  }
+]

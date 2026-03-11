@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773201317,
+  "rationale": "Add a small procedural config to cap CLI argument and chunk sizes, reducing risk of Windows command-line length issues without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_limits.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_limits.v1\",\n  \"windows\": {\n    \"max_arg_chars\": 6000,\n    \"max_total_chars\": 12000,\n    \"chunk_chars\": 2000\n  },\n  \"general\": {\n    \"prefer_file_payloads\": true,\n    \"max_inline_chars\": 1500\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "If consumers ignore this config, no effect. If they strictly enforce low limits, may increase file-based payload usage."
+  ],
+  "expected_benefit": [
+    "Provides a centralized, lightweight limit policy to prevent oversized CLI args on Windows and encourage file-based payloads."
+  ],
+  "proposal_id": "proposal-20260311-115517"
+}

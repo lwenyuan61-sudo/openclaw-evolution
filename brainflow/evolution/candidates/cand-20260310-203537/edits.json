@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_note.v1\",\n  \"t\": 1773146068,\n  \"title\": \"Windows CLI arg-length guard\",\n  \"notes\": [\n    \"When invoking CLI tools, avoid long inline JSON or prompts.\",\n    \"Prefer writing payloads to files and pass a short file path (response file or @file if supported).\",\n    \"Keep argv minimal; use environment variables or temp files for large content.\"\n  ]\n}\n"
+  }
+]

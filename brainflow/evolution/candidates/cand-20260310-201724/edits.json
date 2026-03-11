@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arglen_mitigation.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_config.v1\",\n  \"id\": \"arglen_mitigation\",\n  \"description\": \"Prefer temp-file payloads and short CLI args on Windows to avoid arg-length limits.\",\n  \"rules\": {\n    \"prefer_temp_payload_file\": true,\n    \"max_inline_arg_chars\": 4096,\n    \"temp_payload_dir\": \"memory/procedural/tmp\",\n    \"delete_temp_after_use\": true\n  }\n}\n"
+  }
+]

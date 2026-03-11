@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglength_guard.json",
+    "content": "{\n  \"policy\": \"Prefer file-based payloads over long CLI arguments on Windows.\",\n  \"max_cli_arg_chars\": 6000,\n  \"fallback\": \"Write prompt/input to a temp file and pass the file path instead of inline args.\"\n}\n"
+  }
+]

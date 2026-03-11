@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773148892,
+  "rationale": "Add a small procedural guardrail to minimize Windows command-line length risk by preferring file-based payloads and enforcing a max arg length threshold.",
+  "edits": [],
+  "risks": [
+    "If no component reads this config yet, the change will have no effect until integrated."
+  ],
+  "expected_benefit": [
+    "Reduces CLI failures on Windows by steering long payloads away from command-line arguments."
+  ],
+  "proposal_id": "proposal-20260310-212132"
+}

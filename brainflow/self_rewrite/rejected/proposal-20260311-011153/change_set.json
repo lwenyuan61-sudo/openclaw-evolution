@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773162713,
+  "rationale": "Add a small procedural config to force file-based payload usage and cap inline CLI payload size, reducing Windows command-line length risk without touching larger files.",
+  "edits": [],
+  "risks": [
+    "If existing tooling ignores this file, behavior may not change until wired in."
+  ],
+  "expected_benefit": [
+    "Lower likelihood of Windows CLI arg-length failures during BrainFlow execution by standardizing file-based payload passing."
+  ],
+  "proposal_id": "proposal-20260311-011153"
+}

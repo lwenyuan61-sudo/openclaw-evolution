@@ -1,0 +1,11 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773151022,
+  "rationale": "No file content loaded; to avoid unsafe full-file replacement and CLI arg-length risk, produce no edits.",
+  "edits": [],
+  "risks": [
+    "No changes applied; underlying issue may persist."
+  ],
+  "expected_benefit": "Avoids risky blind overwrite and potential CLI arg-length errors.",
+  "proposal_id": "proposal-20260310-215702"
+}

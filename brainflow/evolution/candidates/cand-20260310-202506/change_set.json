@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773145482,
+  "rationale": "Add a small procedural config to prefer file-backed payloads and limit inline argument sizes to reduce Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_guardrails.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_guardrails.v1\",\n  \"prefer_file_payloads\": true,\n  \"max_inline_arg_chars\": 2000,\n  \"note\": \"If payload exceeds max_inline_arg_chars, write to temp file and pass file path.\"\n}"
+    }
+  ],
+  "risks": [
+    "Config may be ignored if not yet wired into execution flow."
+  ],
+  "expected_benefit": [
+    "Provides a clear, low-risk guardrail for avoiding oversized inline CLI arguments on Windows."
+  ],
+  "proposal_id": "proposal-20260310-202442"
+}

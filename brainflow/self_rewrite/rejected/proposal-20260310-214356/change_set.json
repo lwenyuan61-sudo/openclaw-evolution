@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773150236,
+  "rationale": "Add a procedural note to prefer file-based payloads and shorten inline CLI arguments to reduce Windows arg-length risk without touching other files.",
+  "edits": [],
+  "risks": [
+    "Low: introduces a new procedural note only."
+  ],
+  "expected_benefit": [
+    "Reduces likelihood of Windows command line length errors and improves workflow robustness."
+  ],
+  "proposal_id": "proposal-20260310-214356"
+}

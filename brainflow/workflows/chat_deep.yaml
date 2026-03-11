@@ -1,0 +1,37 @@
+name: chat_deep
+vars:
+  goal: "${ENV:BRAINFLOW_GOAL}"
+  user_msg: "${ENV:BRAINFLOW_IN}"
+steps:
+  - name: log inbound
+    kind: plugin
+    plugin: "note_write"
+    fn: "run"
+    args:
+      filename: "inbox.md"
+      text: "USER: ${vars.user_msg}"
+    save_as: logged
+
+  - name: web forage (general)
+    kind: plugin
+    plugin: "exa_search"
+    fn: "run"
+    args:
+      query: "${vars.user_msg}"
+      num_results: 5
+      search_type: "fast"
+    save_as: search
+
+  - name: log search snippet
+    kind: plugin
+    plugin: "note_write"
+    fn: "run"
+    args:
+      filename: "forage.md"
+      text: "QUERY=${vars.user_msg} | RAW=${vars.search}"
+    save_as: search_logged
+
+  - name: draft (placeholder)
+    kind: echo
+    text: "DEEP_DRAFT\nGOAL=${vars.goal}\nUSER=${vars.user_msg}"
+    save_as: draft

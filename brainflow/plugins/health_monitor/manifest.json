@@ -1,0 +1,1 @@
+{"name":"health_monitor","description":"Detect runtime problems (looping, queue bloat, stale cycle, WhatsApp gateway) and propose self-heal actions","version":"0.1.0"}

@@ -1,0 +1,13 @@
+{
+  "name": "qinwan_execute",
+  "entry": "plugin.py",
+  "functions": {
+    "run": {
+      "description": "Execute an executable task using QinWan identity via OpenClaw agent; may use web search when needed.",
+      "args": {
+        "task": "object",
+        "semantic_text": "string"
+      }
+    }
+  }
+}

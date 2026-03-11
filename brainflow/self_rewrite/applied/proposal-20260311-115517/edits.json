@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_limits.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_limits.v1\",\n  \"windows\": {\n    \"max_arg_chars\": 6000,\n    \"max_total_chars\": 12000,\n    \"chunk_chars\": 2000\n  },\n  \"general\": {\n    \"prefer_file_payloads\": true,\n    \"max_inline_chars\": 1500\n  }\n}\n"
+  }
+]

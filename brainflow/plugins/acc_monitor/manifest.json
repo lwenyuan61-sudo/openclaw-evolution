@@ -1,0 +1,8 @@
+{
+  "name": "acc_monitor",
+  "description": "ACC-style anomaly/loop monitor for raw forage payloads",
+  "inputs": {"raw": "text", "min_chars": "min length"},
+  "outputs": "{ok, hash, issues, state}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

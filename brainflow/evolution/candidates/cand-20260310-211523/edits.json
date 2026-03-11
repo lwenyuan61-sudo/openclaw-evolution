@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_guideline.v1\",\n  \"name\": \"cli_arg_length_guard\",\n  \"goal\": \"Reduce Windows CLI arg-length risk\",\n  \"rules\": [\n    \"Prefer file-based payloads over inline CLI arguments for long text or JSON\",\n    \"If content > 8KB, write to a temp file and pass the file path\",\n    \"Avoid embedding large JSON in command-line flags; use @file or stdin\",\n    \"When possible, compress or shorten prompts before execution\"\n  ],\n  \"thresholds\": {\n    \"inline_arg_soft_limit_bytes\": 8192,\n    \"inline_arg_hard_limit_bytes\": 16384\n  }\n}\n"
+  }
+]

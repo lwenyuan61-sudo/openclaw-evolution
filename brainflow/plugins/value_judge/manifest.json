@@ -1,0 +1,8 @@
+{
+  "name": "value_judge",
+  "description": "Heuristic learning value model (prioritize what to learn next)",
+  "inputs": {"raw": "text", "goal_text": "GOAL.md text"},
+  "outputs": "{score, GoalAlignment, EvidenceStrength, Actionability, Novelty, RiskPenalty, SystemUpgradeValue}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

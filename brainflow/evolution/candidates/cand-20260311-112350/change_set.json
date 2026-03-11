@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773199361,
+  "rationale": "Add a small procedural config to prefer response-file or stdin-based payloads to reduce Windows CLI arg-length risk without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_safety.v1\",\n  \"guidelines\": [\n    \"Prefer reading payloads from files or stdin over long CLI arguments.\",\n    \"When building commands on Windows, avoid embedding large JSON in args.\",\n    \"Use short temp file paths for generated payloads.\",\n    \"If a payload is large, write it to a file and pass only the file path.\"\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "Minimal; introduces a new procedural note file only."
+  ],
+  "expected_benefit": [
+    "Reduces risk of Windows command-line length overflow and improves execution reliability."
+  ],
+  "proposal_id": "proposal-20260311-112241"
+}

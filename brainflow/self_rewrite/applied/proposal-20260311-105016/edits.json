@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglength_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_arglength_guard.v1\",\n  \"guidelines\": {\n    \"prefer_short_args\": true,\n    \"max_arg_chars_hint\": 7000,\n    \"use_file_payloads\": true,\n    \"notes\": \"Keep command lines short on Windows; pass large prompts via files or temp artifacts.\"\n  }\n}\n"
+  }
+]

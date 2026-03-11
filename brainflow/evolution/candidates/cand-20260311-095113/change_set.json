@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773193840,
+  "rationale": "Add a procedural guardrail file that instructs use of temp files instead of long CLI args to reduce Windows command-length failures without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural_hint.v1\",\n  \"topic\": \"cli_arg_length\",\n  \"guidance\": [\n    \"Prefer writing large payloads to temporary files and pass file paths instead of long inline CLI arguments.\",\n    \"When invoking tools or scripts, use @file patterns or stdin redirection where supported.\",\n    \"Keep command lines minimal; move long JSON or prompts into files under workspace/temp.\"\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "Low. Adds a new procedural hint file; no runtime behavior changes until consumed."
+  ],
+  "expected_benefit": [
+    "Reduces risk of Windows CLI arg-length failures by encouraging file-based payload passing."
+  ],
+  "proposal_id": "proposal-20260311-095040"
+}

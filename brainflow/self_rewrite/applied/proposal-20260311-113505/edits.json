@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.arg_length_guard.v1\",\n  \"max_inline_chars\": 8000,\n  \"max_inline_bytes\": 12000,\n  \"prefer_file_payload\": true,\n  \"file_payload_dir\": \"memory/procedural\",\n  \"notes\": \"When composing CLI calls, write large JSON/text to a temp file and pass the file path instead of inline args. Use conservative thresholds to avoid Windows CreateProcess limits.\"\n}\n"
+  }
+]

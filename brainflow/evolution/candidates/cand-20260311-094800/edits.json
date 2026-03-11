@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/windows_cli_arglen_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.proc_rule.v1\",\n  \"name\": \"windows_cli_arglen_guard\",\n  \"priority\": 90,\n  \"when\": {\n    \"os\": \"windows\",\n    \"channel\": \"cli\"\n  },\n  \"rule\": {\n    \"avoid_inline_args\": true,\n    \"max_inline_arg_chars\": 2000,\n    \"preferred_patterns\": [\n      \"write payloads to temp files and pass file paths\",\n      \"use config files for large JSON\",\n      \"split large inputs across files\"\n    ],\n    \"fallback\": \"if inline args exceed limit, switch to file-based input or abort with a concise error\"\n  }\n}\n"
+  }
+]

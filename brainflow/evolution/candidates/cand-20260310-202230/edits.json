@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_mitigation.json",
+    "content": "{\n  \"schema\": \"brainflow.proc.cli_arglen_mitigation.v1\",\n  \"prefer_file_payloads\": true,\n  \"max_inline_chars\": 2048,\n  \"notes\": \"Use temp files for long prompts to avoid Windows arg-length limits.\"\n}"
+  }
+]

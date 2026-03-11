@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773198140,
+  "rationale": "Add a procedural guardrail to prefer file-based payloads and avoid long CLI argument lists on Windows, reducing arg-length failure risk without touching code.",
+  "edits": [],
+  "risks": [
+    "May require slight adjustments in callers to honor the procedure"
+  ],
+  "expected_benefit": [
+    "Lower chance of CLI arg-length errors on Windows and more reliable automation runs."
+  ],
+  "proposal_id": "proposal-20260311-110220"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773146422,
+  "rationale": "Reduce Windows CLI argument-length risk by centralizing limits and preferring file-based inputs for long payloads; this is a low-risk procedural config addition under allowlist.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglength_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arglength_policy.v1\",\n  \"max_inline_chars\": 2000,\n  \"max_arg_total_chars\": 6000,\n  \"prefer_file_inputs\": true,\n  \"file_input_fields\": [\"prompt\", \"context\", \"payload\", \"input_json\", \"instructions\"],\n  \"notes\": \"When estimated CLI args exceed max_arg_total_chars, write payload to a temp file and pass a single file path argument instead of inline JSON.\"\n}"
+    }
+  ],
+  "risks": [
+    "If consumers ignore this policy file, behavior will not change; minimal operational risk."
+  ],
+  "expected_benefit": [
+    "Lower likelihood of Windows CLI failures due to argument length by encourself_evolution_stability_capability file-based inputs for large payloads."
+  ],
+  "proposal_id": "proposal-20260310-204022"
+}

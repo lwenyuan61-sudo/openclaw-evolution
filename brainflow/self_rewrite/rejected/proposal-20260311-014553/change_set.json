@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773164753,
+  "rationale": "Add a procedural guard to cap payload size for Windows CLI to reduce arg-length failures without touching code.",
+  "edits": [],
+  "risks": [
+    "New guard may truncate context if not yet enforced by runtime; requires downstream support to honor this file."
+  ],
+  "expected_benefit": [
+    "Lower risk of Windows command-line length errors and improved reliability of CLI invocations."
+  ],
+  "proposal_id": "proposal-20260311-014553"
+}

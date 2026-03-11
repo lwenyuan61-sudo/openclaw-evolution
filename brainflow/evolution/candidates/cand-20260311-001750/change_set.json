@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773159233,
+  "rationale": "Add a small procedural policy file to cap Windows CLI argument length risk without touching existing code or reading other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_args_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_args_policy.v1\",\n  \"windows_arg_max_chars\": 7500,\n  \"strategy\": \"spill_to_file\",\n  \"notes\": \"If constructed command line exceeds limit, write payload to temp file and pass the file path instead of inline args.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy file may not be consumed yet by runtime; requires later integration."
+  ],
+  "expected_benefit": [
+    "Documents a safe default limit and mitigation strategy, reducing risk of Windows command-line length failures."
+  ],
+  "proposal_id": "proposal-20260311-001353"
+}

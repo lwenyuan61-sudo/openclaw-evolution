@@ -1,0 +1,6 @@
+[
+  {
+    "path": "workflows/chat_deep.yaml",
+    "content": "name: chat_deep\nvars:\n  goal: \"${ENV:BRAINFLOW_GOAL}\"\n  user_msg: \"${ENV:BRAINFLOW_IN}\"\nsteps:\n  - name: log inbound\n    kind: plugin\n    plugin: \"note_write\"\n    fn: \"run\"\n    args:\n      filename: \"inbox.md\"\n      text: \"USER: ${vars.user_msg}\"\n    save_as: logged\n\n  - name: web forage (general)\n    kind: plugin\n    plugin: \"exa_search\"\n    fn: \"run\"\n    args:\n      query: \"${vars.user_msg}\"\n      num_results: 5\n      search_type: \"fast\"\n    save_as: search\n\n  - name: log search snippet\n    kind: plugin\n    plugin: \"note_write\"\n    fn: \"run\"\n    args:\n      filename: \"forage.md\"\n      text: \"QUERY=${vars.user_msg} | RAW=${vars.search}\"\n    save_as: search_logged\n\n  - name: draft (placeholder)\n    kind: echo\n    text: \"DEEP_DRAFT\\nGOAL=${vars.goal}\\nUSER=${vars.user_msg}\"\n    save_as: draft\n"
+  }
+]

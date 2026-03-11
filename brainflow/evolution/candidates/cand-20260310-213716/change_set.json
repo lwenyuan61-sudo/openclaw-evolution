@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773149807,
+  "rationale": "Add a tiny procedural policy file to steer BrainFlow toward shorter Windows CLI invocations without touching code; minimizes risk of long argument lists and avoids extra file reads.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arglen_policy.v1\",\n  \"notes\": \"Prefer writing inputs to temp files and passing file paths over long inline args on Windows. Keep CLI argument strings short (<4k chars) and use response files when possible.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Low. Adds a small policy file only; no code changes."
+  ],
+  "expected_benefit": [
+    "Guidance to avoid long CLI argument strings on Windows and reduce failure risk."
+  ],
+  "proposal_id": "proposal-20260310-213647"
+}

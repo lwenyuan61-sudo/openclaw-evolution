@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_guard.v1\",\n  \"max_cli_arg_bytes\": 8000,\n  \"prefer_tempfile\": true,\n  \"notes\": \"If estimated CLI args exceed threshold, write payload to temp file and pass file path instead of inline JSON.\"\n}\n"
+  }
+]

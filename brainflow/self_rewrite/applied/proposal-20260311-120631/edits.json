@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_note.v1\",\n  \"purpose\": \"Reduce Windows CLI arg-length risk by preferring file-based payloads and short command arguments.\",\n  \"rules\": [\n    \"Prefer passing file paths over inline JSON or long prompts.\",\n    \"Split large tasks into smaller steps to keep cmd length under ~8k.\",\n    \"Avoid embedding large base64 or long URLs in CLI args; store in files.\"\n  ]\n}\n"
+  }
+]

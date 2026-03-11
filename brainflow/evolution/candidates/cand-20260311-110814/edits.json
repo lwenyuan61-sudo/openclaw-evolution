@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_guard.v1\",\n  \"windows\": {\n    \"prefer_file_payload\": true,\n    \"max_arg_chars\": 6000,\n    \"chunk_long_args\": true,\n    \"use_temp_files\": true,\n    \"temp_dir\": \"memory/procedural/tmp\"\n  }\n}\n"
+  }
+]

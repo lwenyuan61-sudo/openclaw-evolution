@@ -1,0 +1,11 @@
+{
+  "stage": 0,
+  "stages": [
+    "evidence_table",
+    "deep_dive",
+    "skill_build",
+    "reflect"
+  ],
+  "lastStageTs": 1772793367,
+  "notes": "深度思考多阶段循环：每轮推进一个子目标；必要时产生 search_request 交给对话区联网。"
+}

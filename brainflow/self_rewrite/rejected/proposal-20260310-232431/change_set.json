@@ -1,0 +1,16 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773156271,
+  "rationale": "LLM call failed; no change proposed.",
+  "edits": [],
+  "risks": [
+    "llm_call_failed"
+  ],
+  "expected_benefit": [],
+  "llm_error": {
+    "ok": false,
+    "error": "http_call_failed:<urlopen error [WinError 10061] 由于目标计算机积极拒绝，无法连接。>",
+    "via": "http"
+  },
+  "proposal_id": "proposal-20260310-232431"
+}

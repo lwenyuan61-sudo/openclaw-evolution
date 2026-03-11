@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773158750,
+  "rationale": "Add a small procedural guard to prefer file-based payloads and avoid long CLI arguments on Windows, reducing arg-length risk without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.proc_guard.v1\",\n  \"goal\": \"Reduce Windows CLI arg-length risk\",\n  \"prefer_file_payloads\": true,\n  \"max_cli_arg_chars\": 6000,\n  \"fallback\": {\n    \"action\": \"write_payload_file\",\n    \"filename_pattern\": \"payload_%Y%m%d_%H%M%S.json\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "If the guard is unused by current code, it has no effect until wired in."
+  ],
+  "expected_benefit": [
+    "Provides a clear, minimal policy to shift large payloads to files, lowering chances of Windows arg-length failures."
+  ],
+  "proposal_id": "proposal-20260311-000550"
+}

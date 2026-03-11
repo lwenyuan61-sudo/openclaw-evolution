@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.proc_cli_arg_guard.v1\",\n  \"max_cmdline_chars_windows\": 7000,\n  \"prefer_payload_files\": true,\n  \"notes\": \"Avoid long inline JSON on Windows; write payload to file and pass path instead.\"\n}\n"
+  }
+]

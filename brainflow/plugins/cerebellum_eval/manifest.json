@@ -1,0 +1,8 @@
+{
+  "name": "cerebellum_eval",
+  "description": "Heuristic evaluator for evidence/novelty/actionability/risk",
+  "inputs": {"raw": "text"},
+  "outputs": "{ok, evidence_strength, novelty, actionability, risk}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

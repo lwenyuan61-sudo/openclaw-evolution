@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.guard.v1\",\n  \"id\": \"cli_arg_length_guard\",\n  \"description\": \"Reduce Windows CLI argument length risk by preferring file-based payloads.\",\n  \"rules\": [\n    \"If an action would pass large JSON or prompts via CLI args, write payload to a temp file and pass the file path instead.\",\n    \"Prefer short flags + file paths over inline strings.\",\n    \"When unsure, default to file-based input to avoid command-line length limits.\"\n  ],\n  \"notes\": [\n    \"Windows cmd/PowerShell have tighter command length limits than POSIX shells.\",\n    \"Use existing workspace temp paths when available.\"\n  ]\n}\n"
+  }
+]

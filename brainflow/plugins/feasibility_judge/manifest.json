@@ -1,0 +1,8 @@
+{
+  "name": "feasibility_judge",
+  "description": "Compute feasibility score for a task/subgoal",
+  "inputs": {"task": "task object"},
+  "outputs": "{FeasibilityScore, ResourceFit, PermissionFit, InfoAvailability, Complexity}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

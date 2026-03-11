@@ -1,0 +1,133 @@
+name: idle_think_background
+vars:
+  goal: "${ENV:BRAINFLOW_GOAL}"
+  topic: "${ENV:BRAINFLOW_TOPIC}"
+steps:
+  - name: web forage
+    kind: plugin
+    plugin: "exa_search"
+    fn: "run"
+    args:
+      query: "${ENV:BRAINFLOW_QUERY}"
+      num_results: 6
+      search_type: "fast"
+    save_as: search
+
+  - name: ACC monitor (anti-loop/anomaly)
+    kind: plugin
+    plugin: "acc_monitor"
+    fn: "run"
+    args:
+      raw: "${vars.search}"
+      min_chars: 200
+    save_as: acc
+
+  - name: cerebellum eval (quality signals)
+    kind: plugin
+    plugin: "cerebellum_eval"
+    fn: "run"
+    args:
+      raw: "${vars.search}"
+    save_as: eval
+
+  - name: semantic consolidation
+    kind: plugin
+    plugin: "semantic_consolidate"
+    fn: "run"
+    args:
+      raw: "${vars.search}"
+      topic: "${vars.topic}"
+    save_as: sem
+
+  - name: persist episodic log
+    kind: plugin
+    plugin: "note_write"
+    fn: "run"
+    args:
+      filename: "episodic/idle.md"
+      text: "ACC=${vars.acc} EVAL=${vars.eval} FORAGE=${vars.search}"
+    save_as: epi
+
+  - name: emit candidate to outbox (raw)
+    kind: plugin
+    plugin: "candidate_write"
+    fn: "run"
+    args:
+      item:
+        kind: "forage_raw"
+        topic: "${vars.topic}"
+        dedup_hash: "${vars.acc.hash}"
+        raw: "${vars.search}"
+        acc: "${vars.acc}"
+        eval: "${vars.eval}"
+        note: "未经价值判断；由亲碗统一判断是否需要主动触达。"
+    save_as: out
+
+  - name: learning value judge (what to learn)
+    kind: plugin
+    plugin: "value_judge"
+    fn: "run"
+    args:
+      raw: "${vars.search}"
+      goal_text: "${vars.goal}"
+    save_as: val
+
+  - name: BG action suggestion
+    kind: plugin
+    plugin: "bg_selector"
+    fn: "run"
+    args:
+      raw: "${vars.search}"
+      top_k: 3
+    save_as: bg
+
+  - name: emit action candidates
+    kind: plugin
+    plugin: "candidate_write"
+    fn: "run"
+    args:
+      item:
+        kind: "action_candidates"
+        topic: "${vars.topic}"
+        dedup_hash: "${vars.acc.hash}"
+        actions: "${vars.bg}"
+        acc: "${vars.acc}"
+        eval: "${vars.eval}"
+        semantic_card: "${vars.sem}"
+        note: "BG-like suggestions; final decision by 亲碗。"
+    save_as: out2
+
+  - name: emit thought packet (for QinWan)
+    kind: plugin
+    plugin: "candidate_write"
+    fn: "run"
+    args:
+      item:
+        kind: "thought_packet"
+        topic: "${vars.topic}"
+        dedup_hash: "${vars.acc.hash}"
+        takeaway: "${vars.sem.takeaway}"
+        sources: "${vars.sem.urls}"
+        eval: "${vars.eval}"
+        value: "${vars.val}"
+        bg_actions: "${vars.bg.actions}"
+        acc: "${vars.acc}"
+        note: "深度思考想法包：供对话区/系统价值判断与对外表达。"
+    save_as: out3
+
+  - name: execute one immediate action (L3 via QinWan)
+    kind: plugin
+    plugin: "qinwan_execute"
+    fn: "run"
+    args:
+      task:
+        kind: "subgoal"
+        id: "${vars.acc.hash}"
+        topic: "${vars.topic}"
+        stage: "deep_dive"
+        title: "从最新 forage 结果中深挖一条最强证据"
+        next: "基于 urls 提取人群/剂量/终点/AE/禁忌，写入 procedural"
+        needs_network: true
+        query: "${ENV:BRAINFLOW_QUERY}"
+      semantic_text: "${vars.sem.takeaway}"
+    save_as: exec1

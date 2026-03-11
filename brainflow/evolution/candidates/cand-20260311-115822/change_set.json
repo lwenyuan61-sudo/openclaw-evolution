@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773201464,
+  "rationale": "Add a small procedural policy file to constrain CLI argument length and prefer file-based inputs, reducing Windows command-line length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural_policy.v1\",\n  \"name\": \"cli_arg_length_policy\",\n  \"goal\": \"Reduce Windows CLI argument-length risk by preferring file-based inputs and short commands.\",\n  \"rules\": [\n    \"If a command or tool call would exceed ~7000 characters total, write payloads to temp files and pass file paths instead of inline content.\",\n    \"Prefer JSON/file inputs over long inline strings for LLM prompts, configs, or data blobs.\",\n    \"When assembling commands, avoid repeating long flags; use config files or environment variables if available.\",\n    \"Keep one command per exec; avoid chaining with long heredocs on Windows.\"\n  ],\n  \"updated_at\": 1773201449\n}\n"
+    }
+  ],
+  "risks": [
+    "May be ignored if not consulted by executor; no direct enforcement."
+  ],
+  "expected_benefit": [
+    "Provides a clear procedural guideline to minimize command-line length failures and improve run reliability on Windows."
+  ],
+  "proposal_id": "proposal-20260311-115744"
+}

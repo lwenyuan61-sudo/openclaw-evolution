@@ -1,0 +1,12 @@
+{
+  "name": "exa_search",
+  "description": "Web search via Exa MCP (mcporter call exa.web_search_exa)",
+  "inputs": {
+    "query": "search query",
+    "num_results": "number of results",
+    "search_type": "fast|auto"
+  },
+  "outputs": "{ok, returncode, text, cmd}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

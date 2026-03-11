@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"cli_arglen_guard\",\n  \"intent\": \"Reduce Windows CLI arg-length risk by preferring file-based inputs and short command lines.\",\n  \"rules\": [\n    \"Prefer writing payloads to temp files and passing file paths instead of long inline JSON/args.\",\n    \"If a command line may exceed 7000 characters, refactor to use files.\",\n    \"When possible, use config files or stdin instead of repeated flags.\"\n  ]\n}"
+  }
+]

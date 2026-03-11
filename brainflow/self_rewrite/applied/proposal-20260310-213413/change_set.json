@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773149653,
+  "rationale": "Add a small procedural config to prefer file-based prompt bundling over long CLI args, reducing Windows command-line length risk without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_mitigation.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.v1\",\n  \"title\": \"CLI Arg Length Mitigation\",\n  \"rules\": [\n    \"When constructing commands on Windows, avoid long inline arguments.\",\n    \"Prefer writing large inputs to temp files and pass file paths instead of raw text.\",\n    \"If a command needs long JSON, write to a file and reference it with @file or --input-file flags when supported.\"\n  ]\n}"
+    }
+  ],
+  "risks": [
+    "Low. Adds a new procedural note only; no runtime logic change."
+  ],
+  "expected_benefit": [
+    "Reduces likelihood of Windows CLI arg-length errors and improves execution robustness."
+  ],
+  "proposal_id": "proposal-20260310-213413"
+}

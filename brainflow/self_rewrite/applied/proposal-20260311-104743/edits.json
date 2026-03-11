@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_safety.v1\",\n  \"prefer_file_args\": true,\n  \"max_cli_chars\": 7000,\n  \"notes\": \"When constructing commands, write large payloads to temp files and pass file paths instead of inline args to avoid Windows command length limits.\"\n}"
+  }
+]

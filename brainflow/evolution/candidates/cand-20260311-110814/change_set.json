@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773198458,
+  "rationale": "Add a procedural guard config to minimize Windows CLI arg-length risk by preferring file-based payloads and chunking, without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_guard.v1\",\n  \"windows\": {\n    \"prefer_file_payload\": true,\n    \"max_arg_chars\": 6000,\n    \"chunk_long_args\": true,\n    \"use_temp_files\": true,\n    \"temp_dir\": \"memory/procedural/tmp\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "New config file may be ignored by existing code until wired; no runtime effect until consumed."
+  ],
+  "expected_benefit": [
+    "Provides a clear, low-risk hook for future logic to avoid long CLI arguments on Windows, reducing failure likelihood."
+  ],
+  "proposal_id": "proposal-20260311-110738"
+}

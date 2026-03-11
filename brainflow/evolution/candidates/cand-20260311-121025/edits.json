@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arglen_policy.v1\",\n  \"max_inline_chars\": 4000,\n  \"prefer_stdin\": true,\n  \"prefer_temp_file\": true,\n  \"notes\": \"Reduce Windows CLI arg-length risk by writing large payloads to temp files and passing file paths.\"\n}"
+  }
+]

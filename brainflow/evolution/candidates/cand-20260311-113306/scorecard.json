@@ -1,0 +1,24 @@
+{
+  "schema": "brainflow.scorecard.v1",
+  "t": 1773199986,
+  "overall_score": 75,
+  "pass": true,
+  "dimensions": [
+    {
+      "name": "execution_success",
+      "score": 6,
+      "rationale": "executed_n=3"
+    },
+    {
+      "name": "robustness",
+      "score": 10,
+      "rationale": "repeatCount~0"
+    }
+  ],
+  "notes": "heuristic_fallback_llm_eval_failed",
+  "evidence": [
+    "pending_n=19",
+    "repeatCount~0",
+    "executed_n=3"
+  ]
+}

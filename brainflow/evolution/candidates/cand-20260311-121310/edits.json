@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arg_length_mitigation.json",
+    "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"title\": \"windows_cli_arg_length_mitigation\",\n  \"steps\": [\n    \"Prefer writing large prompts/payloads to temp files and passing file paths instead of inline CLI args.\",\n    \"Use stdin piping where supported to avoid command-line length limits.\",\n    \"When invoking tools, keep arguments concise and reference files in memory/ or workspace paths.\"\n  ],\n  \"applies_to\": [\"exec\", \"subprocess\", \"cli\"],\n  \"notes\": \"Windows has strict max command line length; file-based IO is safer.\"\n}\n"
+  }
+]

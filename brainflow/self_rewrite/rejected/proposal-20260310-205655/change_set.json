@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773147415,
+  "rationale": "Shorten goal text to reduce CLI argument length risk while preserving intent; no other fields changed.",
+  "edits": [],
+  "risks": [
+    "Minimal: only shortens goal text."
+  ],
+  "expected_benefit": [
+    "Lower risk of Windows CLI arg-length issues while keeping the same objective."
+  ],
+  "proposal_id": "proposal-20260310-205655"
+}

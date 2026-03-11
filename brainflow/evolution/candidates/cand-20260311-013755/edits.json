@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_len_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_len_policy.v1\",\n  \"max_cli_chars\": 6000,\n  \"preferred_payload_method\": \"file\",\n  \"notes\": \"When constructing tool or process calls, write large prompts/inputs to temp files and pass file paths instead of long CLI args on Windows.\"\n}\n"
+  }
+]

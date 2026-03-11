@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglength_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"cli_arglength_mitigation\",\n  \"priority\": \"high\",\n  \"rules\": [\n    \"Prefer file-based inputs (write temp files) over long inline CLI arguments.\",\n    \"Avoid embedding large JSON or prompts directly in command-line flags.\",\n    \"Use response files or config files when available.\",\n    \"Split large tasks into smaller invocations to keep commands short.\"\n  ],\n  \"applies_to\": [\"windows\", \"powershell\", \"cmd\"]\n}\n"
+  }
+]

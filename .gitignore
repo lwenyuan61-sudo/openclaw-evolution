@@ -1,0 +1,11 @@
+brainflow/_backup/
+brainflow/_sandbox/
+brainflow/runs/
+brainflow/logs/
+brainflow/outbox/
+brainflow/memory/
+brainflow/state*
+brainflow/.venv/
+**/__pycache__/
+*.pyc
+*.lock

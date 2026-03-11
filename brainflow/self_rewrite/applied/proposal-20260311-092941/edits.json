@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_safety.v1\",\n  \"prefer_file_payloads\": true,\n  \"max_inline_arg_bytes\": 2048,\n  \"truncate_long_args\": true,\n  \"notes\": \"Bias toward temp-file payloads to avoid Windows CLI arg-length limits.\"\n}"
+  }
+]

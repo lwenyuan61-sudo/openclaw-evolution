@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773193112,
+  "rationale": "Add a procedural policy to mitigate Windows CLI arg-length risks by preferring file-based inputs and shorter commands; satisfies allowlist and single-file edit constraint without reading other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglength_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"cli_arglength_mitigation\",\n  \"priority\": \"high\",\n  \"rules\": [\n    \"Prefer file-based inputs (write temp files) over long inline CLI arguments.\",\n    \"Avoid embedding large JSON or prompts directly in command-line flags.\",\n    \"Use response files or config files when available.\",\n    \"Split large tasks into smaller invocations to keep commands short.\"\n  ],\n  \"applies_to\": [\"windows\", \"powershell\", \"cmd\"]\n}\n"
+    }
+  ],
+  "risks": [
+    "May require additional file I/O steps, slightly increasing task overhead."
+  ],
+  "expected_benefit": [
+    "Lower chance of Windows command-length failures and more robust CLI execution."
+  ],
+  "proposal_id": "proposal-20260311-093832"
+}

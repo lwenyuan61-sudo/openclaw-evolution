@@ -1,0 +1,35 @@
+name: idle_think_push
+vars:
+  goal: "${ENV:BRAINFLOW_GOAL}"
+  self: "+61421934097"
+steps:
+  - name: web forage (self_evolution_stability_capability)
+    kind: plugin
+    plugin: "exa_search"
+    fn: "run"
+    args:
+      query: "2026 self_evolution_stability_capability trial randomized self_evolution_stability_capability self_evolution_stability_capability partial reprogramming epigenetic clock review"
+      num_results: 6
+      search_type: "fast"
+    save_as: search
+
+  - name: breakthrough gate + (optional) push
+    kind: plugin
+    plugin: "breakthrough_gate"
+    fn: "run"
+    args:
+      goal: "${vars.goal}"
+      search_text: "${vars.search}"
+      target: "${vars.self}"
+      threshold: 15
+      send: true
+    save_as: gate
+
+  - name: local log marker
+    kind: plugin
+    plugin: "note_write"
+    fn: "run"
+    args:
+      filename: "breakthrough.md"
+      text: "GATE=${vars.gate}"
+    save_as: logged

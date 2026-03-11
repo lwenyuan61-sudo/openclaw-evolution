@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773139601,
+  "rationale": "Add an explicit strategy principle to minimize inline text and prefer file/path references, guiding LLM steps toward smaller payloads and reducing Windows CLI arg-length risks.",
+  "edits": [
+    {
+      "path": "memory/procedural/strategies.json",
+      "content": "{\n  \"schema\": \"brainflow.strategies.v1\",\n  \"t\": 1773139600,\n  \"principles\": [\n    \"Prefer reversible changes.\",\n    \"Prefer actions that increase execution reliability.\",\n    \"When uncertain, produce a small, testable deliverable.\",\n    \"Minimize inline text; prefer file/path references and small excerpts to reduce Windows CLI arg-length risk.\"\n  ],\n  \"policies\": {\n    \"self_modify\": {\n      \"enabled\": true,\n      \"allowlist\": [\n        \"workflows/*.yaml\",\n        \"plugins/**/*.py\",\n        \"core/**/*.py\",\n        \"memory/procedural/*.json\"\n      ]\n    },\n    \"external_actions\": {\n      \"enabled\": false,\n      \"allowlist\": []\n    }\n  },\n  \"playbooks\": {\n    \"json_parse_fail\": [\n      \"extract first {...} block\",\n      \"repair with JSON-only prompt\",\n      \"fallback to safe subgoal\"\n    ],\n    \"loop_detected\": [\n      \"increase interval\",\n      \"introduce novelty constraint\",\n      \"pause and summarize\"\n    ],\n    \"strategy_json_parse_failed\": [\n      \"fallback to defaults\"\n    ]\n  },\n  \"next_cycle_adjustments\": [],\n  \"sources\": [\n    \"deterministic\"\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "Additional principle is advisory and may not be honored uniformly by all plugins."
+  ],
+  "expected_benefit": [
+    "Encourages smaller prompt payloads and less inline file content, reducing Windows arg-too-long failures and dependency on LLM reading large local files."
+  ],
+  "proposal_id": "proposal-20260310-184641"
+}

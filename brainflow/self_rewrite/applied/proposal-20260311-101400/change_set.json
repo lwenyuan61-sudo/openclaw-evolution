@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773195240,
+  "rationale": "Introduce a procedural policy to minimize Windows CLI argument-length risks by preferring short command lines and response/temp files; single new file to avoid touching existing code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_policy.json",
+      "content": "{\"schema\":\"brainflow.policy.cli_arglen.v1\",\"windows\":{\"max_inline_chars\":4096,\"prefer_response_files\":true,\"response_file_hint\":\"@<path>\",\"prefer_temp_payload_file\":true,\"temp_dir\":\"${WORKSPACE}\\\\tmp\",\"notes\":\"When building CLI commands, write large payloads to temp files and pass file paths instead of inlining JSON.\"}}"
+    }
+  ],
+  "risks": [
+    "Policy file may be unused if not wired into runtime; no behavioral change until referenced."
+  ],
+  "expected_benefit": [
+    "Provides a clear, short configuration for future wiring to reduce CLI argument-length failures on Windows."
+  ],
+  "proposal_id": "proposal-20260311-101400"
+}

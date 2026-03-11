@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_guard.v1\",\n  \"prefer_temp_files\": true,\n  \"max_inline_chars\": 4096,\n  \"chunk_size_chars\": 2048,\n  \"notes\": \"Avoid long inline args on Windows; use temp files for large payloads.\"\n}\n"
+  }
+]

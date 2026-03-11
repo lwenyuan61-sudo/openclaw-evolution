@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/llm_io_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.llm_io_policy.v1\",\n  \"prefer_file_io\": true,\n  \"use_temp_payloads\": true,\n  \"max_arg_bytes\": 2000,\n  \"notes\": \"Reduce Windows CLI arg length risk by favoring file-based payloads.\"\n}\n"
+  }
+]

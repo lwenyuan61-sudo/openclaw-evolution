@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773146876,
+  "rationale": "Add a small procedural policy file to encourage file-based inputs and cap inline payload size, reducing Windows CLI arg-length risk without touching code paths.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_args_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_args_policy.v1\",\n  \"max_inline_chars\": 2000,\n  \"prefer_file_inputs\": true\n}\n"
+    }
+  ],
+  "risks": [
+    "If no component reads this policy yet, the change has no effect until wired in."
+  ],
+  "expected_benefit": [
+    "Provides a low-risk, future-proof guardrail to reduce inline argument size and support file-based inputs."
+  ],
+  "proposal_id": "proposal-20260310-204756"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773197601,
+  "rationale": "Add a procedural defaults file that forces file-based payloads and short CLI arguments to reduce Windows arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_safe_defaults.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_safe_defaults.v1\",\n  \"force_file_payloads\": true,\n  \"max_cli_arg_bytes\": 6000,\n  \"notes\": \"Use temp files for large prompts to avoid Windows command-line length limits.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "If downstream code ignores this defaults file, there may be no effect."
+  ],
+  "expected_benefit": [
+    "Lower likelihood of Windows CLI argument-length failures by promoting file-based payloads."
+  ],
+  "proposal_id": "proposal-20260311-105321"
+}

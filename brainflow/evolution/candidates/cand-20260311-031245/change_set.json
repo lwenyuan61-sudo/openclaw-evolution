@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773159142,
+  "rationale": "Reduce Windows CLI arg-length risk by defining a procedural policy that routes large payloads through files instead of long inline arguments, keeping command lines short and stable.",
+  "edits": [
+    {
+      "path": "memory/procedural/llm_io_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.llm_io_policy.v1\",\n  \"updated\": 1773159127,\n  \"max_inline_chars\": 2000,\n  \"prefer_file_payload\": true,\n  \"file_payload\": {\n    \"dir\": \"memory/procedural/tmp\",\n    \"name_template\": \"llm_payload_${ts}.txt\",\n    \"encoding\": \"utf-8\"\n  },\n  \"cli\": {\n    \"avoid_long_args\": true,\n    \"notes\": \"If payload exceeds max_inline_chars, write to file and pass path instead of inline text.\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy file may be ignored unless consuming code reads it; temporary directory may need creation by caller."
+  ],
+  "expected_benefit": [
+    "Shorter CLI arguments reduce Windows command-line length failures and improve execution reliability."
+  ],
+  "proposal_id": "proposal-20260311-031222"
+}

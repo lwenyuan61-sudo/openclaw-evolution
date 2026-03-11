@@ -1,0 +1,8 @@
+{
+  "name": "openclaw_agent",
+  "description": "Call OpenClaw agent (GPT) with tools via openclaw agent --session-id brainflow-gpt",
+  "inputs": {"message": "prompt", "thinking": "minimal|low|medium|high", "session_id": "session id", "timeout_sec": "timeout"},
+  "outputs": "{ok, text, raw}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

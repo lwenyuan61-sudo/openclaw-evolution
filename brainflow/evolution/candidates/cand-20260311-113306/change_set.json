@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773199938,
+  "rationale": "Add a procedural policy file to favor response-file style inputs and shorter CLI arguments, reducing Windows arg-length risk without touching code or reading additional files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arg_policy.v1\",\n  \"t\": 1773199921,\n  \"policy\": {\n    \"prefer_response_files\": true,\n    \"max_inline_arg_length\": 2048,\n    \"avoid_large_inline_json\": true,\n    \"notes\": \"When constructing CLI calls, write large JSON/text to temp files and pass file paths instead of inline args.\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy file may be unused if not yet read by executors; no direct behavioral change without integration."
+  ],
+  "expected_benefit": [
+    "Provides a low-risk, allowlisted procedural hook to guide future changes toward safer CLI invocation patterns on Windows."
+  ],
+  "proposal_id": "proposal-20260311-113218"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773195391,
+  "rationale": "Add a small procedural policy file to prefer file-based payloads and cap CLI arg size, reducing Windows command-line length risk without touching existing code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_args_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_args_policy.v1\",\n  \"max_cli_arg_chars\": 8000,\n  \"prefer_file_payloads\": true,\n  \"notes\": \"Use temp files for large prompts/contexts to avoid Windows command-line length limits.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Downstream components may not yet read this policy file."
+  ],
+  "expected_benefit": [
+    "Provides a clear, low-risk configuration artifact to guide future updates toward file-based payloads and safer CLI usage."
+  ],
+  "proposal_id": "proposal-20260311-101631"
+}

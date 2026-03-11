@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_guardrails.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_guardrails.v1\",\n  \"prefer_file_payloads\": true,\n  \"max_inline_arg_chars\": 2000,\n  \"note\": \"If payload exceeds max_inline_arg_chars, write to temp file and pass file path.\"\n}"
+  }
+]

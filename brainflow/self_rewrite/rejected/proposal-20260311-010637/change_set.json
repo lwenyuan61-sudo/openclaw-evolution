@@ -1,0 +1,11 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773162397,
+  "rationale": "No safe full-file replacement can be proposed without reading target files; avoiding risk of breaking workflow.",
+  "edits": [],
+  "risks": [
+    "No change applied; existing CLI arg-length risk may persist."
+  ],
+  "expected_benefit": "Avoids introducing incorrect full-file replacements or schema drift.",
+  "proposal_id": "proposal-20260311-010637"
+}

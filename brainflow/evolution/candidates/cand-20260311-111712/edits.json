@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_guard.v1\",\n  \"max_arg_length\": 7000,\n  \"prefer_file_inputs\": true,\n  \"note\": \"Use temp files for prompts and tool payloads to avoid Windows cmd length limits.\"\n}\n"
+  }
+]

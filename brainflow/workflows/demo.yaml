@@ -1,0 +1,26 @@
+name: demo
+vars:
+  who: "主人"
+steps:
+  - name: greet
+    kind: echo
+    text: "你好，${vars.who}。我会跑一个 demo 工作流。"
+    save_as: greeting
+
+  - name: make a new plugin skeleton (simulated learning)
+    kind: synthesize_plugin
+    spec:
+      name: "hello_plugin"
+      description: "示例插件：返回一句问候"
+      inputs:
+        name: "对方名字"
+      outputs: "问候字符串"
+    save_as: new_plugin_record
+
+  - name: call new plugin
+    kind: plugin
+    plugin: "hello_plugin"
+    fn: "run"
+    args:
+      name: "${vars.who}"
+    save_as: plugin_output

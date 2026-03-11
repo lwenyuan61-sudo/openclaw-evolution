@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_safety.v1\",\n  \"windows\": {\n    \"max_command_length\": 7000,\n    \"prefer_payload_files\": true,\n    \"payload_file_dir\": \"memory/procedural/payloads\",\n    \"chunk_args\": true,\n    \"chunk_size\": 50,\n    \"fallback_to_stdin\": true\n  }\n}\n"
+  }
+]

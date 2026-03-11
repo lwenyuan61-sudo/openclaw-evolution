@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_policy.json",
+    "content": "{\n  \"id\": \"cli_arglen_policy\",\n  \"version\": 1,\n  \"summary\": \"Minimize Windows CLI argument length by preferring file-based payloads.\",\n  \"rules\": [\n    \"Avoid embedding large JSON or prompts directly in command-line arguments.\",\n    \"Write payloads to temp files and pass file paths instead.\",\n    \"Prefer short flags and environment variables for small scalars only.\"\n  ]\n}\n"
+  }
+]

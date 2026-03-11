@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773193463,
+  "rationale": "Introduce a compact, centralized CLI-argument safety policy to reduce Windows command-line length risk without touching code or other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arg_safety.v1\",\n  \"max_arg_chars\": 6000,\n  \"max_total_chars\": 20000,\n  \"prefer_file_payload\": true,\n  \"truncate_long_fields\": true,\n  \"truncate_strategy\": \"head-tail\",\n  \"head_chars\": 2000,\n  \"tail_chars\": 1000,\n  \"notes\": \"Central policy for any CLI invocations; keep prompts compact to avoid Windows argv limits.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "May require future code to read this policy before it has effect; truncation policy could drop context if applied blindly."
+  ],
+  "expected_benefit": [
+    "Provides a compact policy anchor for future enforcement, lowering risk of Windows CLI arg-length failures and encouraging file-based payloads."
+  ],
+  "proposal_id": "proposal-20260311-094423"
+}

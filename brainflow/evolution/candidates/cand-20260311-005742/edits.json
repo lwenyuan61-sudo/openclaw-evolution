@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/windows_cli_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.windows_cli_policy.v1\",\n  \"prefer_response_files\": true,\n  \"max_inline_args\": 40,\n  \"max_inline_chars\": 6000,\n  \"notes\": \"Prefer response files and shorter inline args on Windows to reduce command-line length failures.\"\n}\n"
+  }
+]

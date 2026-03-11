@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arg_length_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.arg_length_policy.v1\",\n  \"purpose\": \"Reduce Windows CLI arg-length risk by preferring file-based payloads and short command lines.\",\n  \"rules\": [\n    \"Prefer writing large prompts/payloads to files and pass file paths instead of inline arguments.\",\n    \"Keep single CLI invocations short; split steps when needed.\",\n    \"Avoid embedding JSON blobs in command-line args; reference files instead.\"\n  ],\n  \"examples\": {\n    \"bad\": \"tool --payload '{...large json...}'\",\n    \"good\": \"write payload.json; tool --payload-file payload.json\"\n  }\n}\n"
+  }
+]

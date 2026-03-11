@@ -1,0 +1,11 @@
+{
+  "name": "hello_plugin",
+  "description": "示例插件：返回一句问候",
+  "inputs": {
+    "name": "对方名字"
+  },
+  "outputs": "问候字符串",
+  "version": "0.0.1",
+  "status": "draft",
+  "generated_by": "brainflow-mvp"
+}

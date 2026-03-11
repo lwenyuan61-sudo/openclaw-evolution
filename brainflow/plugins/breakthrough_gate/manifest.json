@@ -1,0 +1,14 @@
+{
+  "name": "breakthrough_gate",
+  "description": "Heuristic breakthrough scorer; optionally sends WhatsApp push via openclaw message send",
+  "inputs": {
+    "goal": "GOAL.md text",
+    "search_text": "raw search output",
+    "target": "WhatsApp E.164",
+    "threshold": "score threshold",
+    "send": "whether to send when triggered"
+  },
+  "outputs": "{score, should_send, reasons, send_result}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

@@ -1,0 +1,23 @@
+name: idle_think
+vars:
+  goal: "${ENV:BRAINFLOW_GOAL}"
+  self: "+61421934097"
+steps:
+  - name: tick banner
+    kind: echo
+    text: "[idle_think] tick. goal chars=${vars.goal}"
+    save_as: banner
+
+  - name: propose next action (placeholder)
+    kind: echo
+    text: "[idle_think] 提案：我会先把 GOAL.md 里的 North Star 填完整，然后再启用外网信息觅食白名单。"
+    save_as: proposal
+
+  - name: (optional) send proposal to WhatsApp self-chat
+    kind: plugin
+    plugin: "wa_send"
+    fn: "run"
+    args:
+      target: "${vars.self}"
+      message: "${vars.proposal}"
+    save_as: send_result

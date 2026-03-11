@@ -1,0 +1,328 @@
+name: idle_think_offline
+vars:
+  goal: "${ENV:BRAINFLOW_GOAL}"
+  topic: "${ENV:BRAINFLOW_TOPIC}"
+steps:
+  - name: ensure memory files exist
+    kind: plugin
+    plugin: "ensure_memory_files"
+    fn: "run"
+    allow_fail: true
+    args: {}
+    save_as: memguard
+
+  - name: apply front-end goal manager
+    kind: plugin
+    plugin: "goal_manager"
+    fn: "run"
+    allow_fail: true
+    args:
+      goal_path: "memory/procedural/goal_manager.json"
+    save_as: goalmgr
+
+  - name: front-queue bridge (front commitments -> outbox)
+    kind: plugin
+    plugin: "front_queue"
+    fn: "run"
+    allow_fail: true
+    args: {}
+    save_as: frontq
+
+  - name: update world model (LLM-led)
+    kind: plugin
+    plugin: "world_model_update"
+    fn: "run"
+    retries: 1
+    retry_delay_sec: 1
+    allow_fail: true
+    args:
+      thinking: "minimal"
+    save_as: wm
+
+  - name: read semantic memory (offline context)
+    kind: plugin
+    plugin: "file_read"
+    fn: "run"
+    args:
+      rel_path: "memory/semantic/cards.md"
+      max_chars: 60
+    save_as: semfile
+
+  - name: cycle manager (deterministic stage; keeps state_cycle.json fresh)
+    kind: plugin
+    plugin: "cycle_manager"
+    fn: "run"
+    args:
+      topic: "${vars.topic}"
+    save_as: cyc
+
+  - name: ACC monitor (anti-loop/anomaly)
+    kind: plugin
+    plugin: "acc_monitor"
+    fn: "run"
+    args:
+      raw: "${vars.cyc.subgoal.stage} ${vars.cyc.subgoal.why} ${vars.cyc.subgoal.next}"
+      min_chars: 200
+    save_as: acc
+
+  - name: learning value judge (what to learn next)
+    kind: plugin
+    plugin: "value_judge"
+    fn: "run"
+    args:
+      raw: "${vars.semfile.text}"
+      goal_text: "${vars.goal}"
+    save_as: val
+
+  - name: BG action suggestion (offline)
+    kind: plugin
+    plugin: "bg_selector"
+    fn: "run"
+    args:
+      raw: "${vars.semfile.text}"
+      top_k: 3
+    save_as: bg
+
+  - name: feasibility judge (for current stage subgoal)
+    kind: plugin
+    plugin: "feasibility_judge"
+    fn: "run"
+    args:
+      task:
+        kind: "subgoal"
+        topic: "${vars.topic}"
+        stage: "${vars.cyc.subgoal.stage}"
+        why: "${vars.cyc.subgoal.why}"
+        next: "${vars.cyc.subgoal.next}"
+        needs_network: "${vars.cyc.subgoal.needs_network}"
+    save_as: feas
+
+  - name: persist episodic log
+    kind: plugin
+    plugin: "note_write"
+    fn: "run"
+    args:
+      filename: "episodic/idle.md"
+      text: "OFFLINE_MODE topic=${vars.topic} STAGE=${vars.cyc.subgoal.stage} FEAS=${vars.feas} ACC=${vars.acc} VALUE=${vars.val}"
+    save_as: epi
+
+  - name: emit subgoal to outbox
+    kind: plugin
+    plugin: "candidate_write"
+    fn: "run"
+    args:
+      item:
+        kind: "subgoal"
+        topic: "${vars.topic}"
+        stage: "${vars.cyc.subgoal.stage}"
+        why: "${vars.cyc.subgoal.why}"
+        next: "${vars.cyc.subgoal.next}"
+        needs_network: "${vars.cyc.subgoal.needs_network}"
+        feasibility: "${vars.feas}"
+    save_as: sub
+
+  - name: decompose subgoal into child subgoals (LLM preferred)
+    kind: plugin
+    plugin: "htn_decompose"
+    fn: "run"
+    retries: 1
+    retry_delay_sec: 1
+    allow_fail: true
+    args:
+      subgoal:
+        kind: "subgoal"
+        topic: "${vars.topic}"
+        stage: "${vars.cyc.subgoal.stage}"
+        why: "${vars.cyc.subgoal.why}"
+        next: "${vars.cyc.subgoal.next}"
+        needs_network: "${vars.cyc.subgoal.needs_network}"
+        # Optional: the parent can carry value/feasibility context for the LLM
+        value: "${vars.val}"
+        feasibility: "${vars.feas}"
+    save_as: htn_raw
+
+  - name: prune low-feasibility tasks (delete subtrees)
+    kind: plugin
+    plugin: "htn_prune"
+    fn: "run"
+    args:
+      htn: "${vars.htn_raw}"
+      threshold: 2.0
+    save_as: htn
+
+  - name: emit child subgoals to outbox
+    kind: plugin
+    plugin: "candidate_write"
+    fn: "run"
+    args:
+      item:
+        kind: "subgoal_children"
+        topic: "${vars.topic}"
+        # dedup by parent id, not acc hash
+        dedup_hash: "${vars.htn.parent.id}"
+        parent: "${vars.htn.parent}"
+        children: "${vars.htn.children}"
+    save_as: sub_children
+
+  - name: enqueue leaf tasks
+    kind: plugin
+    plugin: "queue_manager"
+    fn: "enqueue"
+    args:
+      children: "${vars.htn.children}"
+    save_as: q_enq
+
+  - name: execute multiple leaf tasks (max 3) + check & prune achieved subtrees
+    kind: plugin
+    plugin: "batch_executor"
+    fn: "run"
+    args:
+      max_tasks: 3
+      time_budget_sec: 180
+      semantic_text: "${vars.semfile.text}"
+    save_as: batch
+
+  - name: persist run packet (early; deterministic)
+    kind: plugin
+    plugin: "run_packet_write"
+    fn: "run"
+    args:
+      run_id: "${vars._run_id}"
+      trace_path: "${vars._trace_path}"
+      batch: "${vars.batch}"
+      acc: "${vars.acc}"
+      health: {}
+    save_as: runpkt_early
+
+  - name: emit thought packet (offline)
+    kind: plugin
+    plugin: "candidate_write"
+    fn: "run"
+    args:
+      item:
+        kind: "thought_packet"
+        topic: "${vars.topic}"
+        dedup_hash: "${vars.acc.hash}"
+        stage: "${vars.cyc.subgoal.stage}"
+        takeaway: "离线模式：当前子目标=${vars.cyc.subgoal.stage}。本轮尽力执行了多条叶子子目标（<=3），并对达成的目标子树做了裁剪。"
+        sources: "(offline: memory/semantic/cards.md)"
+        world_model: "${vars.wm.path}"
+        value: "${vars.val}"
+        bg_actions: "${vars.bg.actions}"
+        acc_hash: "${vars.acc.hash}"
+        note: "深度思考离线想法包：为降低 Windows 命令行参数过长风险，本条不再内嵌完整 subgoal_tree/executed 细节，可在 run_packet 中查看。"
+    save_as: out
+
+  - name: learn/update strategies (LLM-led)
+    kind: plugin
+    plugin: "strategy_learn"
+    fn: "run"
+    retries: 1
+    retry_delay_sec: 1
+    allow_fail: true
+    args:
+      thinking: "minimal"
+    save_as: strat
+
+  - name: self-modify propose small change set (LLM-led)
+    kind: plugin
+    plugin: "self_modify"
+    fn: "propose_change"
+    retries: 1
+    retry_delay_sec: 1
+    allow_fail: true
+    args:
+      goal: "Improve BrainFlow execution success: reduce LLM JSON parse failures; ensure doer-mode; make workflow robust and self-improving."
+      thinking: "minimal"
+    save_as: change_set
+
+  - name: self-modify apply sandbox + smoke test + promote (if enabled)
+    kind: plugin
+    plugin: "self_modify"
+    fn: "apply_and_test"
+    retries: 1
+    retry_delay_sec: 1
+    allow_fail: true
+    args:
+      change_set_path: "${vars.change_set.path}"
+    save_as: sm_apply
+
+  - name: memory curation + forgetting (LLM-led, dual vector stores)
+    kind: plugin
+    plugin: "memory_curation"
+    fn: "run"
+    args:
+      run_id: "${vars._run_id}"
+      trace_path: "${vars._trace_path}"
+      thinking: "minimal"
+    save_as: memcur
+
+  - name: scan progress (local)
+    kind: plugin
+    plugin: "progress_scan"
+    fn: "run"
+    args:
+      max_changes: 30
+    save_as: scan
+
+  - name: health monitor (detect runtime problems)
+    kind: plugin
+    plugin: "health_monitor"
+    fn: "run"
+    args: {}
+    save_as: health
+
+  - name: persist run packet (deterministic)
+    kind: plugin
+    plugin: "run_packet_write"
+    fn: "run"
+    args:
+      run_id: "${vars._run_id}"
+      trace_path: "${vars._trace_path}"
+      batch: "${vars.batch}"
+      acc: "${vars.acc}"
+      health: "${vars.health}"
+    save_as: runpkt
+
+  - name: self-eval scorecard (L4 metrics)
+    kind: plugin
+    plugin: "eval_harness"
+    fn: "run"
+    allow_fail: true
+    args:
+      run_id: "${vars._run_id}"
+      trace_path: "${vars._trace_path}"
+      thinking: "minimal"
+    save_as: eval
+
+  - name: evolution selector (versioning + selection)
+    kind: plugin
+    plugin: "evolution_selector"
+    fn: "run"
+    allow_fail: true
+    args: {}
+    save_as: evo
+
+  - name: emit last error as self-repair report (if any)
+    kind: plugin
+    plugin: "emit_last_error"
+    fn: "run"
+    allow_fail: true
+    args:
+      last_error: "${vars._last_error}"
+      run_id: "${vars._run_id}"
+      trace_path: "${vars._trace_path}"
+    save_as: last_err_emit
+
+  - name: proactive LLM judge + WhatsApp notify (major progress / social ping)
+    kind: plugin
+    plugin: "proactive_llm_notify"
+    fn: "run"
+    retries: 1
+    retry_delay_sec: 1
+    allow_fail: true
+    args:
+      progress_scan: "${vars.scan}"
+      health: "${vars.health}"
+      thinking: "minimal"
+    save_as: proactive

@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\"schema\":\"brainflow.procedural.v1\",\"name\":\"cli_arg_length_guard\",\"rules\":[\"Prefer file-based inputs over long CLI args\",\"Avoid embedding large JSON in command line\",\"Use temp files for payloads and references\"],\"notes\":\"Added to reduce Windows command line length issues.\"}"
+  }
+]

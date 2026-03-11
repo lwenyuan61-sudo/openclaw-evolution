@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_args_policy.json",
+    "content": "{\n  \"version\": 1,\n  \"windows_arg_max_safe\": 12000,\n  \"use_tempfile_over_bytes\": 8000,\n  \"notes\": \"Prefer @file or stdin for large prompts to avoid Windows CLI length limits.\"\n}"
+  }
+]

@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_prefs.json",
+    "content": "{\n  \"use_temp_payload_files\": true,\n  \"max_inline_args\": 16,\n  \"prefer_stdin\": true,\n  \"notes\": \"Keep CLI arguments short on Windows; prefer temp files or stdin.\"\n}"
+  }
+]

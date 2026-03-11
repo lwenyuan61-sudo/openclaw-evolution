@@ -1,0 +1,16 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773194025,
+  "rationale": "LLM call failed; no change proposed.",
+  "edits": [],
+  "risks": [
+    "llm_call_failed"
+  ],
+  "expected_benefit": [],
+  "llm_error": {
+    "ok": false,
+    "error": "http_call_failed:timed out",
+    "via": "http"
+  },
+  "proposal_id": "proposal-20260311-095345"
+}

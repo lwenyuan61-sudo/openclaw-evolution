@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/llm_invocation_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.llm_invocation_policy.v1\",\n  \"use_file_payload\": true,\n  \"inline_prompt_max_chars\": 1200,\n  \"prefer_prompt_file\": true,\n  \"notes\": \"Constrain inline prompt size to reduce Windows CLI length issues; send full payload via temp file.\"\n}\n"
+  }
+]

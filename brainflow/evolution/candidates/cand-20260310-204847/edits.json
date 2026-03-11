@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_args_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_args_policy.v1\",\n  \"max_inline_chars\": 2000,\n  \"prefer_file_inputs\": true\n}\n"
+  }
+]

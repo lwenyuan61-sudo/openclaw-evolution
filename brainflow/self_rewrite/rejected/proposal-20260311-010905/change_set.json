@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773162545,
+  "rationale": "Add a procedural policy file that enforces shorter CLI argument usage and prefers file-based payloads to reduce Windows arg-length risk.",
+  "edits": [],
+  "risks": [
+    "Introducing a new policy file may be ignored if not wired into runtime; no effect until referenced."
+  ],
+  "expected_benefit": [
+    "Reduces likelihood of Windows CLI arg-length failures by codifying a low limit and file-based payload preference."
+  ],
+  "proposal_id": "proposal-20260311-010905"
+}

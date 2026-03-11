@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773198296,
+  "rationale": "Add a small procedural guard config to reduce Windows CLI argument-length risk without touching code paths; keeps payloads short by default and encourages file-based inputs.",
+  "edits": [
+    {
+      "path": "memory/procedural/arg_length_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.arg_length_guard.v1\",\n  \"max_arg_chars\": 6000,\n  \"prefer_file_payloads\": true,\n  \"truncate_overlong_inline_payloads\": true,\n  \"notes\": \"Use file-based payloads when possible to avoid Windows CLI arg-length issues.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Guard config may be ignored if no consumer reads it; however it is non-invasive and safe."
+  ],
+  "expected_benefit": [
+    "Provides a clear, low-risk directive to keep CLI args short, lowering the chance of Windows command-line length failures."
+  ],
+  "proposal_id": "proposal-20260311-110456"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773160372,
+  "rationale": "Reduce Windows CLI argument-length risk by introducing a small procedural config that enforces prompt/arg truncation limits without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_safety.v1\",\n  \"max_prompt_chars\": 4000,\n  \"max_arg_chars\": 6000,\n  \"truncate_strategy\": \"tail\",\n  \"notes\": \"Keep CLI arguments under Windows limits by truncating oversized prompts/args before execution.\"\n}"
+    }
+  ],
+  "risks": [
+    "May truncate important context in rare cases; mitigated by tail strategy and conservative limits."
+  ],
+  "expected_benefit": [
+    "Lower likelihood of Windows CLI failures due to long arguments while keeping behavior deterministic."
+  ],
+  "proposal_id": "proposal-20260311-003252"
+}

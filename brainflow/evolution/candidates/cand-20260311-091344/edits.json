@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/windows_arglen_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"windows_arglen_policy\",\n  \"description\": \"On Windows, avoid long CLI argument payloads; write large JSON/text to temp files and pass file paths instead.\",\n  \"rules\": [\n    {\n      \"when\": \"platform == 'windows' && payload_length > 6000\",\n      \"action\": \"write_payload_to_temp_file_and_pass_path\"\n    }\n  ]\n}\n"
+  }
+]

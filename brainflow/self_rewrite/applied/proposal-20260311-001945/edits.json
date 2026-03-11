@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_safety.v1\",\n  \"prefer_file_payloads\": true,\n  \"max_cli_arg_chars\": 6000,\n  \"notes\": \"Avoid long CLI args by writing payloads to temp files and passing file paths.\"\n}"
+  }
+]

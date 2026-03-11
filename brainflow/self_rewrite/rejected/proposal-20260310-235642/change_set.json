@@ -1,0 +1,14 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773158202,
+  "rationale": "Add a procedural guardrail that caps Windows CLI argument length and prefers temp-file payloads to avoid command-line overflow without touching other files.",
+  "edits": [],
+  "risks": [
+    "If other components ignore this guard, no effect.",
+    "Some tools may not support response files; fallback required elsewhere."
+  ],
+  "expected_benefit": [
+    "Fewer Windows CLI invocation failures caused by long argument strings; more reliable tool execution."
+  ],
+  "proposal_id": "proposal-20260310-235642"
+}

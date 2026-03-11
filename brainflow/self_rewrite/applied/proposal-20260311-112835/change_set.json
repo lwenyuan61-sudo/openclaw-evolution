@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773199715,
+  "rationale": "Add a procedural policy file to prefer file-based payloads and short CLI args, reducing Windows argument-length risk without touching other code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_args_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_args_policy.v1\",\n  \"prefer_file_payloads\": true,\n  \"max_arg_chars\": 6000,\n  \"when_exceed\": \"write_payload_file_and_pass_path\",\n  \"notes\": \"Reduce Windows command-line length risk by keeping args short and using payload files.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "If consumers do not read this policy file, behavior will not change; otherwise minimal risk."
+  ],
+  "expected_benefit": [
+    "Provides a single source of truth for keeping CLI args short and shifting to file-based payloads, reducing failures on Windows."
+  ],
+  "proposal_id": "proposal-20260311-112835"
+}

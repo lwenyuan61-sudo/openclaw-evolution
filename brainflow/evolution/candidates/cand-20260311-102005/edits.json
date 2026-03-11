@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/arglen_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.arglen_guard.v1\",\n  \"enabled\": true,\n  \"max_arg_len\": 7000,\n  \"prefer_response_files\": true,\n  \"notes\": \"When building CLI commands, write long argument lists or payloads to a response file and pass the file path instead.\"\n}\n"
+  }
+]

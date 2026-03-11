@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773198993,
+  "rationale": "Add a small procedural guard that enforces file-based inputs to reduce Windows CLI argument-length risk without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arg_guard.v1\",\n  \"max_arg_length\": 7000,\n  \"prefer_file_inputs\": true,\n  \"note\": \"Use temp files for prompts and tool payloads to avoid Windows cmd length limits.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "May be ignored if no loader consumes this new procedural file; otherwise low risk."
+  ],
+  "expected_benefit": [
+    "Encourages short CLI args and file-based payloads, reducing failure due to Windows command-length limits."
+  ],
+  "proposal_id": "proposal-20260311-111633"
+}

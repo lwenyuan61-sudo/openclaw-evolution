@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773199547,
+  "rationale": "Reduce Windows CLI argument-length risk by enforcing file-based inputs and tight inline limits without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_policy.json",
+      "content": "{\"schema\":\"brainflow.cli_arglen_policy.v1\",\"max_inline_chars\":2000,\"prefer_file_inputs\":true,\"force_file_inputs_over_chars\":4000,\"notes\":\"Use temp files for prompts/output to avoid Windows command-line length limits.\"}"
+    }
+  ],
+  "risks": [
+    "Unknown consumer may ignore new policy file if not wired."
+  ],
+  "expected_benefit": [
+    "Lower chance of CLI failures on long prompts by standardizing file-based inputs."
+  ],
+  "proposal_id": "proposal-20260311-112547"
+}

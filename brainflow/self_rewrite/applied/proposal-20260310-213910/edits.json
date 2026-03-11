@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arg_length_policy.v1\",\n  \"preferred_mode\": \"file_payload\",\n  \"max_inline_chars\": 2048,\n  \"notes\": \"When constructing CLI invocations on Windows, write large payloads to temp files and pass file paths instead of long inline args. Keep flags concise to avoid Win32 arg-length limits.\"\n}"
+  }
+]

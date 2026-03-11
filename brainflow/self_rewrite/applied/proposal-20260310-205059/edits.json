@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_length_policy.v1\",\n  \"max_arg_chars\": 6000,\n  \"strategy\": \"prefer_file_payloads\",\n  \"notes\": \"When payloads exceed max_arg_chars, write to a temp file and pass the file path instead of long CLI args to avoid Windows CreateProcess limits.\"\n}"
+  }
+]

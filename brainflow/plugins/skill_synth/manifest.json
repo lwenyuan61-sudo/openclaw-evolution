@@ -1,0 +1,8 @@
+{
+  "name": "skill_synth",
+  "description": "Propose a new skill spec (plugin/workflow) for self-upgrade; no execution",
+  "inputs": {"gap": "capability gap", "kind": "plugin|workflow"},
+  "outputs": "spec object",
+  "version": "0.0.1",
+  "status": "experimental"
+}

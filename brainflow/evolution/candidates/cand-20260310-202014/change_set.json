@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773145190,
+  "rationale": "Add a small procedural config to cap CLI argument length by preferring file-based payloads, reducing Windows arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_limits.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_limits.v1\",\n  \"max_args_chars\": 6000,\n  \"prefer_tempfile_payload\": true,\n  \"note\": \"Use temp files for large payloads to avoid Windows CLI arg length limits.\"\n}"
+    }
+  ],
+  "risks": [
+    "May be ignored if no loader yet; otherwise low risk."
+  ],
+  "expected_benefit": [
+    "Encourages shorter command lines and safer payload handling on Windows, reducing execution failures."
+  ],
+  "proposal_id": "proposal-20260310-201950"
+}

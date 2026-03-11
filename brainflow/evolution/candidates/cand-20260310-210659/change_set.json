@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773147995,
+  "rationale": "Add a small procedural config to cap CLI argument size via a local guard, reducing risk of Windows command-line length failures without touching code paths.",
+  "edits": [
+    {
+      "path": "memory/procedural/arg_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.arg_guard.v1\",\n  \"max_cli_arg_chars\": 6000,\n  \"max_inline_payload_chars\": 4000,\n  \"prefer_tempfile_over_inline\": true,\n  \"notes\": \"Heuristic limits for Windows cmd/ps argument length; keep payloads short to avoid spawn failures.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Downstream components may ignore this config if not yet wired; no functional change unless read by the executor."
+  ],
+  "expected_benefit": [
+    "Provides a single source of truth for safe CLI argument limits to prevent intermittent Windows spawn failures when payloads are large."
+  ],
+  "proposal_id": "proposal-20260310-210635"
+}

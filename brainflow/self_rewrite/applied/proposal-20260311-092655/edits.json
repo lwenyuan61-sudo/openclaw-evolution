@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_policy.json",
+    "content": "{\"prefer_short_args\":true,\"max_arg_chars\":6000,\"notes\":\"Keep CLI arguments short; use files/paths instead of long inline JSON.\"}\n"
+  }
+]

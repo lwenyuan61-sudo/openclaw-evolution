@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_profile.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_profile.v1\",\n  \"defaults\": {\n    \"use_response_file\": true,\n    \"max_inline_chars\": 1200,\n    \"prefer_tempfile\": true\n  }\n}\n"
+  }
+]

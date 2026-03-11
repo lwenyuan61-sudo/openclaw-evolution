@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773159585,
+  "rationale": "Add a small procedural config to prefer file-based payloads and cap CLI arg size, reducing Windows command-length risk without touching code or other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_safety.v1\",\n  \"prefer_file_payloads\": true,\n  \"max_cli_arg_chars\": 6000,\n  \"notes\": \"Avoid long CLI args by writing payloads to temp files and passing file paths.\"\n}"
+    }
+  ],
+  "risks": [
+    "Downstream components may ignore the new procedural config if not wired; no behavior change until consumed."
+  ],
+  "expected_benefit": [
+    "Provides a clear, low-risk knob to shift payloads to files and cap CLI arg length, reducing Windows CLI failures."
+  ],
+  "proposal_id": "proposal-20260311-001945"
+}

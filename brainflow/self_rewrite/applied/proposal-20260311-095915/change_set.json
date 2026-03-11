@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773194355,
+  "rationale": "Add a small procedural policy file to ensure long prompts/args are passed via temp files instead of CLI args, reducing Windows command-line length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_mitigation.json",
+      "content": "{\n  \"schema\": \"brainflow.proc_policy.v1\",\n  \"name\": \"cli_arg_length_mitigation\",\n  \"applies_to\": [\"exec\", \"subprocess\", \"shell\"],\n  \"rules\": {\n    \"max_cmdline_chars\": 7000,\n    \"prefer_temp_files\": true,\n    \"temp_file_hint\": \"Use @file or stdin when args would exceed max_cmdline_chars.\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy file may be ignored if no loader consumes it yet."
+  ],
+  "expected_benefit": [
+    "Provides a documented, loadable policy to steer future changes toward using temp files/STDIN for large payloads, lowering Windows CLI length failure risk."
+  ],
+  "proposal_id": "proposal-20260311-095915"
+}

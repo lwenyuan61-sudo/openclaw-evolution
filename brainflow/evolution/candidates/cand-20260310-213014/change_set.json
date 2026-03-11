@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773149048,
+  "rationale": "Add a procedural config hint to prefer file-based payloads to reduce Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural_hint.v1\",\n  \"name\": \"cli_arg_safety\",\n  \"guidance\": {\n    \"prefer_payload_files\": true,\n    \"max_inline_arg_chars\": 2048,\n    \"notes\": \"When constructing commands, write large JSON to a temp file and pass its path instead of inlining JSON in argv to avoid Windows CLI length limits.\"\n  }\n}\n"
+    }
+  ],
+  "risks": [
+    "Low: adds a new procedural hint file only; no runtime behavior change unless consumed."
+  ],
+  "expected_benefit": [
+    "Provides a safe default to avoid command-line length failures on Windows when large JSON payloads are needed."
+  ],
+  "proposal_id": "proposal-20260310-212408"
+}

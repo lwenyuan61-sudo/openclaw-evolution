@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773197263,
+  "rationale": "Add a procedural guard to prefer file-based argument passing to reduce Windows CLI length risk without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_safety.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_safety.v1\",\n  \"prefer_file_args\": true,\n  \"max_cli_chars\": 7000,\n  \"notes\": \"When constructing commands, write large payloads to temp files and pass file paths instead of inline args to avoid Windows command length limits.\"\n}"
+    }
+  ],
+  "risks": [
+    "May be ignored by components that don't read this procedural guidance until integrated."
+  ],
+  "expected_benefit": [
+    "Lower likelihood of Windows CLI argument-length failures when large prompts or payloads are passed to executors."
+  ],
+  "proposal_id": "proposal-20260311-104743"
+}

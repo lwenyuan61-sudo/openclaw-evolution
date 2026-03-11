@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_arglen_policy.v1\",\n  \"notes\": \"Prefer writing inputs to temp files and passing file paths over long inline args on Windows. Keep CLI argument strings short (<4k chars) and use response files when possible.\"\n}\n"
+  }
+]

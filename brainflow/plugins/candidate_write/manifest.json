@@ -1,0 +1,8 @@
+{
+  "name": "candidate_write",
+  "description": "Append a candidate item to brainflow/outbox/candidates.jsonl",
+  "inputs": {"item": "JSON object"},
+  "outputs": "{ok, path, written}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

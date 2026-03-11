@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773146085,
+  "rationale": "Add a small procedural guard note to prefer response files and short argv to reduce Windows CLI arg-length risk without touching other code or files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural_note.v1\",\n  \"t\": 1773146068,\n  \"title\": \"Windows CLI arg-length guard\",\n  \"notes\": [\n    \"When invoking CLI tools, avoid long inline JSON or prompts.\",\n    \"Prefer writing payloads to files and pass a short file path (response file or @file if supported).\",\n    \"Keep argv minimal; use environment variables or temp files for large content.\"\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "Low; adds a new procedural note only. No runtime behavior changes."
+  ],
+  "expected_benefit": [
+    "Provides clear guidance to avoid Windows command-line length failures and improves robustness for future modifications."
+  ],
+  "proposal_id": "proposal-20260310-203445"
+}

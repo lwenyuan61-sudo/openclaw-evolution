@@ -1,0 +1,13 @@
+name: idle_think_local
+vars:
+  goal: "${ENV:BRAINFLOW_GOAL}"
+steps:
+  - name: tick banner
+    kind: echo
+    text: "[idle_think] tick(local). goal chars=${vars.goal}"
+    save_as: banner
+
+  - name: propose next action (placeholder)
+    kind: echo
+    text: "[idle_think] 本次只记录本地：我会围绕 North Star 生成下一步提案与待办。"
+    save_as: proposal

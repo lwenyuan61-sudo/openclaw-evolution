@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773159073,
+  "rationale": "Add a small procedural guard config that favors file-based payloads over long CLI args to reduce Windows command-line length risk.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_guard.json",
+      "content": "{\"schema\":\"brainflow.procedural.cli_arg_guard.v1\",\"prefer_file_payloads\":true,\"max_inline_arg_chars\":1200,\"notes\":\"When constructing CLI calls, write large payloads to temp files and pass file paths instead of long inline args.\"}"
+    }
+  ],
+  "risks": [
+    "Minimal; introduces a new procedural hint file that may be ignored if not yet wired."
+  ],
+  "expected_benefit": [
+    "Reduces likelihood of Windows CLI arg-length failures by nudging workflows toward file-based payloads."
+  ],
+  "proposal_id": "proposal-20260311-001113"
+}

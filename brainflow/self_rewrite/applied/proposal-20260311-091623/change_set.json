@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773191783,
+  "rationale": "Add a small procedural policy to prefer file-based payloads over long CLI arguments to reduce Windows command length risk.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arg_length_policy.v1\",\n  \"prefer_file_payload\": true,\n  \"max_inline_bytes\": 4096,\n  \"notes\": \"When constructing commands, write large payloads to temp files and pass file paths instead of long inline JSON/args.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "May require downstream readers to honor this new policy; if ignored, no change."
+  ],
+  "expected_benefit": [
+    "Lower risk of Windows command line length errors by encouraging file-based payloads."
+  ],
+  "proposal_id": "proposal-20260311-091623"
+}

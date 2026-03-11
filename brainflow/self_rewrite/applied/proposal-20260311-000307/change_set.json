@@ -1,0 +1,19 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773158587,
+  "rationale": "Add a lightweight procedural policy to prefer short CLI argument usage and file-based payloads to reduce Windows command-line length failures without touching other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural_policy.v1\",\n  \"name\": \"cli_arg_length_policy\",\n  \"purpose\": \"Reduce Windows CLI arg-length risk by preferring file-based payloads over long inline arguments.\",\n  \"rules\": [\n    {\n      \"when\": \"building_cli_commands\",\n      \"prefer\": \"@file or temp file inputs\",\n      \"avoid\": \"large inline JSON or long prompt strings\"\n    },\n    {\n      \"when\": \"payload_size_gt\": 2048,\n      \"action\": \"write_payload_to_file_and_pass_path\"\n    }\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy may be unused until referenced by caller.",
+    "Thresholds may need tuning for specific tools."
+  ],
+  "expected_benefit": [
+    "Lower likelihood of Windows command-line length errors by nudging toward file-based arguments."
+  ],
+  "proposal_id": "proposal-20260311-000307"
+}

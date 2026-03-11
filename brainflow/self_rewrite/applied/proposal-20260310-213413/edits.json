@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_mitigation.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural.v1\",\n  \"title\": \"CLI Arg Length Mitigation\",\n  \"rules\": [\n    \"When constructing commands on Windows, avoid long inline arguments.\",\n    \"Prefer writing large inputs to temp files and pass file paths instead of raw text.\",\n    \"If a command needs long JSON, write to a file and reference it with @file or --input-file flags when supported.\"\n  ]\n}"
+  }
+]

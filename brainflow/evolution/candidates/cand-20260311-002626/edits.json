@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/llm_invocation_defaults.json",
+    "content": "{\n  \"schema\": \"brainflow.llm_invocation_defaults.v1\",\n  \"prefer_payload_file\": true,\n  \"max_inline_chars\": 8000,\n  \"arg_pack_mode\": \"file\",\n  \"notes\": \"Use temp payload files to avoid Windows CLI arg-length limits; keep inline args short.\"\n}\n"
+  }
+]

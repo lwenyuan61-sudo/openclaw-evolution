@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773150705,
+  "rationale": "Add a procedural guard to prefer tempfiles for long payloads, reducing Windows CLI arg-length risk.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_guard.v1\",\n  \"max_cli_arg_bytes\": 8000,\n  \"prefer_tempfile\": true,\n  \"notes\": \"If estimated CLI args exceed threshold, write payload to temp file and pass file path instead of inline JSON.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "If consumers ignore this config, behavior will not change; if misread, could route small payloads to tempfiles unnecessarily."
+  ],
+  "expected_benefit": [
+    "Lower chance of Windows command-line length overflow and fewer failed tool invocations."
+  ],
+  "proposal_id": "proposal-20260310-215145"
+}

@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_safety.v1\",\n  \"max_prompt_chars\": 4000,\n  \"max_arg_chars\": 6000,\n  \"truncate_strategy\": \"tail\",\n  \"notes\": \"Keep CLI arguments under Windows limits by truncating oversized prompts/args before execution.\"\n}"
+  }
+]

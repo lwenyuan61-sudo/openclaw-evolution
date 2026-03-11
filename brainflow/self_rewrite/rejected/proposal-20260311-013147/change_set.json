@@ -1,0 +1,9 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773163907,
+  "rationale": "No safe single-file replacement can be proposed without reading target files; returning no-op to respect constraints and avoid unintended changes.",
+  "edits": [],
+  "risks": "No change applied; underlying JSON parse issues may persist.",
+  "expected_benefit": "Avoids risky modifications without context; maintains system stability.",
+  "proposal_id": "proposal-20260311-013147"
+}

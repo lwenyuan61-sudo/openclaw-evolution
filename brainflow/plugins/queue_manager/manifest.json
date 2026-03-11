@@ -1,0 +1,8 @@
+{
+  "name": "queue_manager",
+  "description": "Manage pending/done task queue for subgoals",
+  "inputs": {},
+  "outputs": "varies",
+  "version": "0.0.1",
+  "status": "experimental"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773165128,
+  "rationale": "Add a procedural rule to prefer file-based payload passing on Windows to reduce CLI argument length failures without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/windows_arglen_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"windows_arglen_policy\",\n  \"description\": \"On Windows, avoid long CLI argument payloads; write large JSON/text to temp files and pass file paths instead.\",\n  \"rules\": [\n    {\n      \"when\": \"platform == 'windows' && payload_length > 6000\",\n      \"action\": \"write_payload_to_temp_file_and_pass_path\"\n    }\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "Procedure may be ignored if no consumer uses it; requires downstream to honor policy."
+  ],
+  "expected_benefit": [
+    "Reduces Windows CLI arg-length risk by codifying a file-based payload preference."
+  ],
+  "proposal_id": "proposal-20260311-015208"
+}

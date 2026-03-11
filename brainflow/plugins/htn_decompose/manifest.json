@@ -1,0 +1,8 @@
+{
+  "name": "htn_decompose",
+  "description": "Decompose a subgoal into child subgoals (HTN-style)",
+  "inputs": {"subgoal": "subgoal object"},
+  "outputs": "{ok, parent, children[]}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

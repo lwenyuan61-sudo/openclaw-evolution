@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglength_guard.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_rule.v1\",\n  \"rule_id\": \"prefer_file_io_for_large_payloads\",\n  \"description\": \"When payloads are large, write to temp files and pass file paths instead of long CLI args.\",\n  \"applies_to\": [\"windows\"],\n  \"threshold_bytes\": 4096,\n  \"actions\": [\"write_payload_to_file\", \"pass_path_arg\"],\n  \"notes\": \"Use this to avoid command line length limits on Windows.\"\n}\n"
+  }
+]

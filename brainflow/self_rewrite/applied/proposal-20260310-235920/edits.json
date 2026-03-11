@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_safety.json",
+    "content": "{\n  \"schema\": \"brainflow.cli_safety.v1\",\n  \"use_payload_file\": true,\n  \"max_inline_chars\": 1200,\n  \"prefer_file_args\": true,\n  \"truncate_strategy\": \"head_tail\",\n  \"head_chars\": 600,\n  \"tail_chars\": 400,\n  \"note\": \"Keep command-line args short on Windows by passing large payloads via temp files.\"\n}\n"
+  }
+]

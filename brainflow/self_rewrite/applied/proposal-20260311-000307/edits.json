@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_policy.json",
+    "content": "{\n  \"schema\": \"brainflow.procedural_policy.v1\",\n  \"name\": \"cli_arg_length_policy\",\n  \"purpose\": \"Reduce Windows CLI arg-length risk by preferring file-based payloads over long inline arguments.\",\n  \"rules\": [\n    {\n      \"when\": \"building_cli_commands\",\n      \"prefer\": \"@file or temp file inputs\",\n      \"avoid\": \"large inline JSON or long prompt strings\"\n    },\n    {\n      \"when\": \"payload_size_gt\": 2048,\n      \"action\": \"write_payload_to_file_and_pass_path\"\n    }\n  ]\n}\n"
+  }
+]

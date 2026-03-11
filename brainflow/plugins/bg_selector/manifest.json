@@ -1,0 +1,8 @@
+{
+  "name": "bg_selector",
+  "description": "Basal-ganglia-like action candidate scorer (suggest-only)",
+  "inputs": {"raw": "raw candidate text", "top_k": "number of actions"},
+  "outputs": "{ok, score, reasons, actions[]}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

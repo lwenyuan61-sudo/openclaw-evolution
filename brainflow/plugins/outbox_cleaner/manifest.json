@@ -1,0 +1,8 @@
+{
+  "name": "outbox_cleaner",
+  "description": "Remove Exa 429/rate-limit noise from outbox and (optionally) semantic cards",
+  "inputs": {"also_clean_semantic": "bool"},
+  "outputs": "{ok, kept, dropped, backup}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

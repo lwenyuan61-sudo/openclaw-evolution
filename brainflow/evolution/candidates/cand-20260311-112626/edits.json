@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arglen_policy.json",
+    "content": "{\"schema\":\"brainflow.cli_arglen_policy.v1\",\"max_inline_chars\":2000,\"prefer_file_inputs\":true,\"force_file_inputs_over_chars\":4000,\"notes\":\"Use temp files for prompts/output to avoid Windows command-line length limits.\"}"
+  }
+]

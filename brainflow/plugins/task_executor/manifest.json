@@ -1,0 +1,8 @@
+{
+  "name": "task_executor",
+  "description": "Execute one leaf subgoal into procedural artifacts; optionally emits search_request",
+  "inputs": {"task": "task object", "semantic_text": "text"},
+  "outputs": "{ok, artifact, search_request?}",
+  "version": "0.0.1",
+  "status": "experimental"
+}

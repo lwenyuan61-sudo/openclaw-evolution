@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773162159,
+  "rationale": "Add a small procedural policy file to encourage short CLI invocations and file-based inputs on Windows, reducing arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_args_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_args_policy.v1\",\n  \"t\": 1773162144,\n  \"rules\": [\n    {\n      \"id\": \"prefer_payload_files\",\n      \"desc\": \"When invoking CLI tools or subprocesses on Windows, prefer passing inputs via temp/payload files instead of long argument strings.\",\n      \"priority\": 90\n    },\n    {\n      \"id\": \"max_args_soft_limit\",\n      \"desc\": \"Keep individual command argument strings under 2000 characters; if longer, write to file and pass file path instead.\",\n      \"priority\": 80\n    }\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "May be ignored by components that do not consume procedural policy files."
+  ],
+  "expected_benefit": [
+    "Provides a lightweight, centralized guideline to reduce Windows CLI arg-length failures with minimal change surface."
+  ],
+  "proposal_id": "proposal-20260311-010239"
+}

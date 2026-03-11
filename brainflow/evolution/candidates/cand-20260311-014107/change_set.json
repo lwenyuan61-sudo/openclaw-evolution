@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773164041,
+  "rationale": "Add a small procedural config to prefer file-based inputs over long CLI arguments, reducing Windows arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_len_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.procedural.cli_arg_len_policy.v1\",\n  \"max_cli_chars\": 6000,\n  \"preferred_payload_method\": \"file\",\n  \"notes\": \"When constructing tool or process calls, write large prompts/inputs to temp files and pass file paths instead of long CLI args on Windows.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "Policy file may be ignored by components that do not consult procedural configs."
+  ],
+  "expected_benefit": [
+    "Reduces Windows command-line length failures by encouraging file-based payloads."
+  ],
+  "proposal_id": "proposal-20260311-013401"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773194691,
+  "rationale": "Add a lightweight procedural guard to cap Windows CLI argument length and prefer file-based payloads, reducing risk without touching code or other files.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.proc_cli_arg_guard.v1\",\n  \"max_cmdline_chars_windows\": 7000,\n  \"prefer_payload_files\": true,\n  \"notes\": \"Avoid long inline JSON on Windows; write payload to file and pass path instead.\"\n}\n"
+    }
+  ],
+  "risks": [
+    "If unused by runtime, change is inert. If a different component expects a conflicting schema name, it may ignore this file."
+  ],
+  "expected_benefit": [
+    "Provides a single source of truth for CLI arg-length limits and encourages file-based payloads to reduce Windows command-line failures."
+  ],
+  "proposal_id": "proposal-20260311-100451"
+}

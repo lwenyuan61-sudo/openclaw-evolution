@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773161503,
+  "rationale": "Reduce Windows CLI argument-length risk by defining a simple policy to prefer temp files/stdin for large prompts, avoiding oversized inline args.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_args_policy.json",
+      "content": "{\n  \"version\": 1,\n  \"windows_arg_max_safe\": 12000,\n  \"use_tempfile_over_bytes\": 8000,\n  \"notes\": \"Prefer @file or stdin for large prompts to avoid Windows CLI length limits.\"\n}"
+    }
+  ],
+  "risks": [
+    "If no component reads this policy, behavior will not change."
+  ],
+  "expected_benefit": [
+    "Provides a clear, centralized limit to guide future steps toward temp-file usage and reduce CLI failures."
+  ],
+  "proposal_id": "proposal-20260311-005143"
+}

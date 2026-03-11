@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/cli_arg_length_guard.json",
+    "content": "{\n  \"cli_arg_length_guard\": {\n    \"enabled\": true,\n    \"max_arg_chars\": 6000,\n    \"use_response_files\": true,\n    \"prefer_temp_files\": true\n  }\n}\n"
+  }
+]

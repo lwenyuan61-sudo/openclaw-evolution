@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773147854,
+  "rationale": "Introduce a concise procedural rule to prefer file-based payloads and temp files over long inline CLI args, reducing Windows arg-length risk.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_policy.json",
+      "content": "{\n  \"id\": \"cli_arglen_policy\",\n  \"version\": 1,\n  \"summary\": \"Minimize Windows CLI argument length by preferring file-based payloads.\",\n  \"rules\": [\n    \"Avoid embedding large JSON or prompts directly in command-line arguments.\",\n    \"Write payloads to temp files and pass file paths instead.\",\n    \"Prefer short flags and environment variables for small scalars only.\"\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "New procedural file may be unused until referenced by workflow logic."
+  ],
+  "expected_benefit": [
+    "Reduced likelihood of Windows CLI arg-length failures without modifying core logic."
+  ],
+  "proposal_id": "proposal-20260310-210414"
+}

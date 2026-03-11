@@ -1,0 +1,6 @@
+[
+  {
+    "path": "memory/procedural/self_modify_payload_latest.json",
+    "content": "{\"schema\":\"brainflow.self_modify_payload.v1\",\"t\":1773163563,\"goal\":\"Improve BrainFlow execution reliability: reduce JSON parse failures, enforce doer-mode, and harden workflow.\",\"allowlist\":[\"workflows/*.yaml\",\"plugins/**/*.py\",\"core/**/*.py\",\"memory/procedural/*.json\"],\"signals\":{\"last_scorecard_overall\":75,\"last_scorecard_pass\":true,\"last_scorecard_notes\":\"heuristic_fallback_llm_eval_failed\",\"last_scorecard_evidence\":[\"pending_n=14\",\"repeatCount~0\",\"executed_n=3\"]},\"output_schema\":{\"schema\":\"brainflow.change_set.v2\",\"keys\":[\"schema\",\"t\",\"rationale\",\"edits\",\"risks\",\"expected_benefit\"],\"constraints\":{\"max_files\":1,\"full_file_replacement\":true}}}"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773192415,
+  "rationale": "Add a small procedural config to prefer short argument passing to reduce Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_policy.json",
+      "content": "{\"prefer_short_args\":true,\"max_arg_chars\":6000,\"notes\":\"Keep CLI arguments short; use files/paths instead of long inline JSON.\"}\n"
+    }
+  ],
+  "risks": [
+    "None; adds a new procedural hint file only."
+  ],
+  "expected_benefit": [
+    "Reduces likelihood of Windows command-line length issues while keeping behavior opt-in."
+  ],
+  "proposal_id": "proposal-20260311-092655"
+}

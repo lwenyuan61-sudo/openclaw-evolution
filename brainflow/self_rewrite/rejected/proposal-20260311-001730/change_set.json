@@ -1,0 +1,13 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773159450,
+  "rationale": "Shorten procedural payload fields to reduce downstream CLI argument length risk while preserving intent.",
+  "edits": [],
+  "risks": [
+    "Minimal; only shortens text fields."
+  ],
+  "expected_benefit": [
+    "Smaller payload reduces command-line argument length risk without changing behavior."
+  ],
+  "proposal_id": "proposal-20260311-001730"
+}

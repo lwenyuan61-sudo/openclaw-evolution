@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773202180,
+  "rationale": "Introduce a procedural policy to minimize Windows CLI argument length risks by preferring stdin/temp-file payloads over large inline args.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arglen_policy.json",
+      "content": "{\n  \"schema\": \"brainflow.cli_arglen_policy.v1\",\n  \"max_inline_chars\": 4000,\n  \"prefer_stdin\": true,\n  \"prefer_temp_file\": true,\n  \"notes\": \"Reduce Windows CLI arg-length risk by writing large payloads to temp files and passing file paths.\"\n}"
+    }
+  ],
+  "risks": [
+    "New policy file may be unused unless referenced by executor logic."
+  ],
+  "expected_benefit": [
+    "Provides a clear, low-risk guideline to reduce command-line length failures on Windows by standardizing file-based payload handling."
+  ],
+  "proposal_id": "proposal-20260311-120940"
+}

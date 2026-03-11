@@ -1,0 +1,11 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773146718,
+  "rationale": "No safe full-file replacement possible without reading target file; returning no-op to avoid unintended changes and reduce risk.",
+  "edits": [],
+  "risks": [
+    "No changes applied; underlying issues remain."
+  ],
+  "expected_benefit": "Avoids accidental corruption when full-file replacement is required without file context.",
+  "proposal_id": "proposal-20260310-204518"
+}

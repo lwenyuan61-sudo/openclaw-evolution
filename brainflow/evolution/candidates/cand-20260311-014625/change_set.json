@@ -1,0 +1,18 @@
+{
+  "schema": "brainflow.change_set.v2",
+  "t": 1773164588,
+  "rationale": "Add a small procedural guard to prefer short command forms and temp files, reducing Windows CLI arg-length risk without touching code.",
+  "edits": [
+    {
+      "path": "memory/procedural/cli_arg_length_guard.json",
+      "content": "{\n  \"schema\": \"brainflow.procedure.v1\",\n  \"name\": \"cli_arg_length_guard\",\n  \"goal\": \"Reduce Windows CLI argument-length failures by preferring temp files and short commands.\",\n  \"rules\": [\n    \"When constructing CLI commands, avoid long inline JSON or prompts; write payloads to a temp file and pass the file path.\",\n    \"Prefer @file or --input-file style flags when available.\",\n    \"If a command line exceeds ~6k characters, refactor to use file inputs or environment variables.\",\n    \"Keep paths short (use workspace-relative paths when possible).\"\n  ]\n}\n"
+    }
+  ],
+  "risks": [
+    "If a downstream component expects inline JSON only, it may ignore this guidance until code is updated to read the procedure."
+  ],
+  "expected_benefit": [
+    "Lower incidence of Windows CLI arg-length errors and more reliable execution when large prompts or payloads are used."
+  ],
+  "proposal_id": "proposal-20260311-014308"
+}
