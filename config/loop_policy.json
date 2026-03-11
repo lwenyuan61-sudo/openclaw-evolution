@@ -1,0 +1,4 @@
+{
+  "self_query_until_done": true,
+  "note": "Backend repeatedly queries itself until task completes or confirmed failure; nonblocking to frontend."
+}
