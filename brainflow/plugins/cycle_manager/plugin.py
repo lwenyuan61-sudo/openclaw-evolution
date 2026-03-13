@@ -23,7 +23,14 @@ def run(topic: str = "longevity") -> Dict[str, Any]:
 
     state: Dict[str, Any] = {
         "stage": 0,
-        "stages": ["evidence_table", "deep_dive", "skill_build", "reflect"],
+        "stages": [
+            "stability_hardening",
+            "capability_growth",
+            "environment_adaptation",
+            "evaluation_gate",
+            "rollback_readiness",
+            "reflect",
+        ],
         "lastStageTs": 0,
     }
     try:
@@ -32,7 +39,14 @@ def run(topic: str = "longevity") -> Dict[str, Any]:
     except Exception:
         pass
 
-    stages: List[str] = list(state.get("stages") or ["evidence_table", "deep_dive", "skill_build", "reflect"])
+    stages: List[str] = list(state.get("stages") or [
+        "stability_hardening",
+        "capability_growth",
+        "environment_adaptation",
+        "evaluation_gate",
+        "rollback_readiness",
+        "reflect",
+    ])
     i = int(state.get("stage") or 0) % len(stages)
     stage = stages[i]
 
@@ -46,33 +60,50 @@ def run(topic: str = "longevity") -> Dict[str, Any]:
         pass
 
     # create a subgoal packet
-    if stage == "evidence_table":
+    if stage == "stability_hardening":
         subgoal = {
             "kind": "subgoal",
             "stage": stage,
             "topic": topic,
-            "why": "离线阶段：先把已沉淀的语义卡片整理成证据等级表，避免重复检索。",
-            "next": "生成 evidence_table 草稿（人类RCT/观察/动物/体外；剂量/终点/风险/禁忌）。",
+            "why": "稳定优先：压制空转与异常、降低重复失败，保障持续运行。",
+            "next": "扫描失败类型/重复任务；提出降噪与去重措施；更新最小稳定策略。",
             "needs_network": False,
         }
-    elif stage == "deep_dive":
-        # Prefer feasibility: do as much as possible offline; only request network when truly blocked.
+    elif stage == "capability_growth":
         subgoal = {
             "kind": "subgoal",
             "stage": stage,
             "topic": topic,
-            "why": "先在离线条件下最大化推进深挖（机制/剂量/人群/AE）；只有遇到关键缺口才请求联网。",
-            "next": "选择最强来源并深挖；列出关键缺口；若缺口阻塞结论再发 search_request。",
+            "why": "能力增长：提高拆解与执行质量，提升完成率与可复用度。",
+            "next": "生成可复用技能/流程规格；完善输入输出与验证步骤。",
+            "needs_network": False,
+        }
+    elif stage == "environment_adaptation":
+        subgoal = {
+            "kind": "subgoal",
+            "stage": stage,
+            "topic": topic,
+            "why": "环境适应：根据资源与约束调整策略，离线优先，联网必要时再开。",
+            "next": "基于当前 world_model/health 状态调整策略；标注何时需要联网。",
             "needs_network": False,
             "feasibility_hint": "offline_first",
         }
-    elif stage == "skill_build":
+    elif stage == "evaluation_gate":
         subgoal = {
             "kind": "subgoal",
             "stage": stage,
             "topic": topic,
-            "why": "把反复出现的整理/深挖步骤技能化，形成可复用 workflow/plugin 规格。",
-            "next": "产出一个 skill spec（输入输出+测试骨架），写入 procedural 候选。",
+            "why": "评估门禁：每次变化都要可评估、可审计。",
+            "next": "更新评估指标与阈值；生成最新 scorecard 并记录趋势。",
+            "needs_network": False,
+        }
+    elif stage == "rollback_readiness":
+        subgoal = {
+            "kind": "subgoal",
+            "stage": stage,
+            "topic": topic,
+            "why": "回滚准备：保证版本可恢复，失败自动回退。",
+            "next": "检查最新备份；验证回滚路径可用；记录回滚演练结果。",
             "needs_network": False,
         }
     else:

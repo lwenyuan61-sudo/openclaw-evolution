@@ -105,6 +105,90 @@ def _restore_from_backup(base_dir: str, backup_dir: str, promoted: List[str]) ->
             shutil.copy2(src, dst)
 
 
+def rollback_if_needed(scorecard_path: str | None = None, evals_path: str | None = None) -> Dict[str, Any]:
+    """Rollback to latest backup if scorecard fails pass threshold.
+
+    Returns a summary dict. Safe no-op when scorecard passes or is missing.
+    """
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    scorecard_path = scorecard_path or os.path.join(base_dir, "memory", "procedural", "scorecard_latest.json")
+    evals_path = evals_path or os.path.join(base_dir, "memory", "procedural", "evals.json")
+
+    def _load(path: str) -> Dict[str, Any]:
+        try:
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    obj = json.load(f)
+                    if isinstance(obj, dict):
+                        return obj
+        except Exception:
+            pass
+        return {}
+
+    scorecard = _load(scorecard_path)
+    if not scorecard:
+        return {"ok": True, "action": "no_rollback", "note": "scorecard_missing"}
+
+    evals = _load(evals_path)
+    pass_threshold = int(evals.get("pass_threshold") or 70)
+    overall = int(scorecard.get("overall_score") or 0)
+    passed = bool(scorecard.get("pass")) or overall >= pass_threshold
+
+    if passed:
+        return {"ok": True, "action": "no_rollback", "overall": overall, "threshold": pass_threshold}
+
+    backup_root = os.path.join(base_dir, "_backup")
+    if not os.path.isdir(backup_root):
+        return {"ok": False, "action": "rollback", "error": "no_backup_root"}
+
+    # pick latest backup dir
+    latest_dir = None
+    latest_ts = 0.0
+    for name in os.listdir(backup_root):
+        p = os.path.join(backup_root, name)
+        if os.path.isdir(p):
+            ts = os.path.getmtime(p)
+            if ts > latest_ts:
+                latest_ts = ts
+                latest_dir = p
+
+    if not latest_dir:
+        return {"ok": False, "action": "rollback", "error": "no_backup_dir"}
+
+    restored = []
+    for root, _, files in os.walk(latest_dir):
+        for fn in files:
+            src = os.path.join(root, fn)
+            rel = os.path.relpath(src, latest_dir)
+            dst = os.path.join(base_dir, rel)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(src, dst)
+            restored.append(rel.replace("\\", "/"))
+
+    # log rollback
+    log_path = os.path.join(base_dir, "memory", "procedural", "rollback_log.jsonl")
+    try:
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps({
+                "t": int(time.time()),
+                "overall": overall,
+                "threshold": pass_threshold,
+                "backup_dir": latest_dir,
+                "restored": restored,
+            }, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
+
+    return {
+        "ok": True,
+        "action": "rollback",
+        "overall": overall,
+        "threshold": pass_threshold,
+        "backup_dir": latest_dir,
+        "restored": restored,
+    }
+
+
 def _as_list(x: Any) -> List[Any]:
     if x is None:
         return []

@@ -295,6 +295,14 @@ steps:
       thinking: "minimal"
     save_as: eval
 
+  - name: rollback guard (auto rollback if eval fails)
+    kind: plugin
+    plugin: "self_modify"
+    fn: "rollback_if_needed"
+    allow_fail: true
+    args: {}
+    save_as: rollback
+
   - name: evolution selector (versioning + selection)
     kind: plugin
     plugin: "evolution_selector"

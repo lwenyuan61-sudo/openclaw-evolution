@@ -24,12 +24,12 @@ mkdir -p "$CFG_DIR"
 # Unique seed
 SEED="$(date +%s)-$RANDOM"
 
-# Ask mode
-read -r -p "Choose evolution mode (conservative/fast) [conservative]: " MODE
+# Mode (no prompts; configurable via env)
+MODE="${OPENCLAW_EVOLUTION_MODE:-conservative}"
 if [ "$MODE" != "fast" ]; then MODE="conservative"; fi
 
-# Ask tick
-read -r -p "Choose tick seconds (60/120/300) [60]: " TICK
+# Tick (no prompts; configurable via env)
+TICK="${OPENCLAW_EVOLUTION_TICK:-60}"
 if [ "$TICK" != "120" ] && [ "$TICK" != "300" ]; then TICK="60"; fi
 
 cat > "$CFG_DIR/seed.json" <<EOF

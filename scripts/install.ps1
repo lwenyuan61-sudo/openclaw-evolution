@@ -18,12 +18,14 @@ New-Item -ItemType Directory -Force -Path $cfg | Out-Null
 # Generate unique seed
 $seed = [guid]::NewGuid().ToString()
 
-# Ask evolution mode
-$mode = Read-Host "Choose evolution mode (conservative/fast)"
+# Evolution mode (no prompts; configurable via env)
+$mode = $env:OPENCLAW_EVOLUTION_MODE
+if ([string]::IsNullOrWhiteSpace($mode)) { $mode = "conservative" }
 if ($mode -ne "fast") { $mode = "conservative" }
 
-# Ask tick
-$tick = Read-Host "Choose tick seconds (60/120/300)"
+# Tick seconds (no prompts; configurable via env)
+$tick = $env:OPENCLAW_EVOLUTION_TICK
+if ([string]::IsNullOrWhiteSpace($tick)) { $tick = "60" }
 if ($tick -ne "120" -and $tick -ne "300") { $tick = "60" }
 
 @"{" | Set-Content (Join-Path $cfg "seed.json")

@@ -14,10 +14,12 @@ This project is an **advanced evolution of OpenClaw** (independent, not endorsed
 ---
 
 ## 1) One‑click install (recommended)
-> The installer will ask you for:
-> - **Evolution mode**: conservative or fast
-> - **Tick**: 60/120/300 seconds
-> It will also generate a **unique seed** so each installation is slightly different (but compatible).
+> 无交互、无提问：一键安装即完成。
+> 默认值：mode=conservative, tick=60 秒。
+> 如需覆盖，可用环境变量：
+> - `OPENCLAW_EVOLUTION_MODE=fast|conservative`
+> - `OPENCLAW_EVOLUTION_TICK=60|120|300`
+> 安装时会生成 **唯一 seed**，保证每次安装差异化但兼容。
 
 ### Windows (PowerShell)
 ```powershell
