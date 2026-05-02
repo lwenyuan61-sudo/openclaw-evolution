@@ -9,3 +9,23 @@ brainflow/.venv/
 **/__pycache__/
 *.pyc
 *.lock
+# Agent export privacy/build exclusions
+**/node_modules/
+**/state/
+**/memory/
+**/logs/
+**/tmp/
+**/.openclaw/
+**/__pycache__/
+*.pyc
+*.pyo
+*.wav
+*.mp3
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.log
+.env
+*.token

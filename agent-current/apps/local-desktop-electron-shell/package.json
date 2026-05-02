@@ -1,0 +1,31 @@
+{
+  "name": "local-desktop-electron-shell",
+  "version": "0.1.0-alpha",
+  "private": true,
+  "description": "Approved Electron shell scaffold for Local Evolution Agent Desktop Companion. Dependencies are intentionally not installed by this scaffold commit.",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "check": "node --check src/main.js && node --check src/preload.js && node --check src/smoke-test.js && node --check src/menu-status.js && node --check src/menu-actions.js && node --check src/menu-action-test.js && node --check src/tray-status.js && node --check src/persistent-smoke.js && node --check src/autostart-readiness.js && node --check src/autostart-control.js && node --check src/autostart-rollback-drill.js",
+    "smoke": "node src/smoke-test.js",
+    "menu:status": "node src/menu-status.js",
+    "menu:test-actions": "node src/menu-action-test.js",
+    "tray:status": "node src/tray-status.js",
+    "smoke:persistent": "node src/persistent-smoke.js",
+    "autostart:readiness": "node src/autostart-readiness.js",
+    "autostart:status": "node src/autostart-control.js --status",
+    "autostart:install": "node src/autostart-control.js --install",
+    "autostart:uninstall": "node src/autostart-control.js --uninstall",
+    "autostart:rollback-drill": "node src/autostart-rollback-drill.js",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^30.0.0"
+  },
+  "local-evolution-agent": {
+    "approvalSource": "Lee broad approval 2026-05-01 10:35 AEST",
+    "dashboardSource": "../..\\state\\app_shell_dashboard.html",
+    "defaultMode": "local-file-dashboard-shell",
+    "persistentProcessStartedByScaffold": false
+  }
+}

@@ -1,16 +1,17 @@
+# openclaw-evolution
 
-- `config/tick.json` (60 / 120 / 300 seconds)
-- `config/front_back_mode.json` (front‑drives‑back handshake)
+Public evolution repository for OpenClaw local agent experiments.
 
----
+## Latest update
 
-## Controlled Front↔Back Mode
-The system runs in **front‑drives‑back** mode by default. After each front‑end turn, it decides whether to spawn a back‑end task. The back‑end must report completion/failure to the front‑end before the loop closes. This ensures **stronger capability without runaway noise**.
+The current anonymized agent evolution export is in [`agent-current/`](./agent-current/).
 
-You can change this behavior via:
-- `config/front_back_mode.json`
+Highlights:
 
----
+- resident control-plane prototype
+- semantic signal layer and anti-noise routing
+- desktop/app shell wrappers
+- resource/VRAM/memory gates
+- self-funding automation-service preparation
 
-## High Token Cost Notice
-Evolution loops can be **token‑intensive**. If cost is a concern, increase tick seconds or switch to conservative mode.
+See [`agent-current/EVOLUTION_UPDATE_2026-05-02.md`](./agent-current/EVOLUTION_UPDATE_2026-05-02.md).
